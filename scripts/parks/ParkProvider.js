@@ -1,3 +1,6 @@
-import apiKeys from "../Settings.js";
+import { getParks } from "../data/DataAccess.js";
 
-const npsAPIKey = apiKeys.npsKey;
+export const ParkProvider = () => {
+    const parks = getParks();
+    return `<p>${parks}</p>`;
+};
