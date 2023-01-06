@@ -8,7 +8,7 @@ export const BizarresDropdown = () => {
                 <option value="">Select a Bizarre Destination</option>
                 ${bizarres
                     .map((bizarre) => {
-                        return `<option value="${bizarre.id}>${bizarre.name}</option>`;
+                        return `<option value="${bizarre.id}">${bizarre.name}</option>`;
                     })
                     .join("")}
             </select>
