@@ -8,12 +8,10 @@ export const HolidayRoad = () => {
       <h2>Holiday Road</h2>
     
       <div class="dropdownBoxes">
-        <div class="parkDropdown dropdown">
-          ${ParkProvider()}
-        </div>
-  
+        ${ParkProvider()}
         ${BizarresDropdown()}
         ${eateryDropdown()}
+      </div>
       
       <div class="mainContent">
         <div class="chosenOptions">
