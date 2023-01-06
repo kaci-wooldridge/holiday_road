@@ -5,10 +5,10 @@ export const BizarresDropdown = () => {
     return `
         <div class="dropdown" id="bizarres__dropdown">
             <select>
-                <option value=""> Bizarres </option>
+                <option value="">Select a Bizarre</option>
                 ${bizarres
                     .map((bizarre) => {
-                        return `<option value="bizarre--${bizarre.id}">${bizarre.name}</option>`;
+                        return `<option value="${bizarre.id}>${bizarre.name}</option>`;
                     })
                     .join("")}
             </select>
