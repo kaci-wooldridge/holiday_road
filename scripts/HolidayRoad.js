@@ -1,6 +1,7 @@
+import { BizarresDropdown } from "./bizarres/BizarresProvider.js";
+import { ParkProvider } from "./parks/ParkProvider.js";
 import { eateryDropdown } from './eateries/EateryProvider.js'
 
-import { BizarresDropdown } from './bizarres/BizarresProvider.js'
 
 export const HolidayRoad = () => {
 	return `
@@ -8,7 +9,7 @@ export const HolidayRoad = () => {
     
       <div class="dropdownBoxes">
         <div class="parkDropdown dropdown">
-          <select><option> parks </option></select>
+          ${ParkProvider()}
         </div>
   
         ${BizarresDropdown()}
