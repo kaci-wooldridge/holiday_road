@@ -5,7 +5,7 @@ import APIKeys from "../Settings.js";
 const parkKey = APIKeys.npsKey;
 const parkAPI = `https://developer.nps.gov/api/v1/parks?api_key=${parkKey}`;
 export const fetchParks = () => {
-    return fetch(parkAPI)
+    return fetch(`${parkAPI}/data`)
         .then((response) => response.json())
         .then((park) => {
             applicationState.parks = park;
