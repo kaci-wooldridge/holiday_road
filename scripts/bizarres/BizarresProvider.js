@@ -5,7 +5,7 @@ export const BizarresDropdown = () => {
     return `
         <div class="dropdown" id="bizarres__dropdown">
             <select>
-                <option value="">Select a Bizarre</option>
+                <option value="">Select a Bizarre Destination</option>
                 ${bizarres
                     .map((bizarre) => {
                         return `<option value="${bizarre.id}>${bizarre.name}</option>`;
