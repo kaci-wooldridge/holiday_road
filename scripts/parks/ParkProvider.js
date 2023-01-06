@@ -11,7 +11,7 @@ export const ParkProvider = () => {
 				.map((park) => {
 					return `<option value="${park.id}">${park.fullName}</option>`
 				})
-				.join(``)}
+				.join("")}
         </select>
     </div>
     `
