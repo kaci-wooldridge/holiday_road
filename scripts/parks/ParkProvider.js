@@ -1,15 +1,18 @@
-import { getParks } from "../data/DataAccess.js";
+import { getParks } from '../data/DataAccess.js'
 
 export const ParkProvider = () => {
-    const parks = getParks();
+	const parks = getParks()
 
-    return `<select class="dropdown" id="parks__dropdown">
-            <option value="0">Select a Park</option>
-            ${parks.map(
-                (park) => {
-                    return `<option value="${park.id}">${park.fullName}</option>`
-            }
-        )
-    }
-</select>`
+	return `
+    <div class="dropdown" id="parks__dropdown">
+        <select>
+            <option value="">Select a Park</option>
+            ${parks
+				.map((park) => {
+					return `<option value="${park.id}">${park.fullName}</option>`
+				})
+				.join(``)}
+        </select>
+    </div>
+    `
 }
