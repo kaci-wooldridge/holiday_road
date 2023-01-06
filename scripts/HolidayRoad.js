@@ -1,5 +1,7 @@
+import { BizarresDropdown } from "./bizarres/BizarresProvider.js";
+
 export const HolidayRoad = () => {
-	return `
+    return `
       <h2>Holiday Road</h2>
     
       <div class="dropdownBoxes">
@@ -7,9 +9,7 @@ export const HolidayRoad = () => {
           <select><option> parks </option></select>
         </div>
   
-        <div class="bizarreDropdown dropdown">
-          <select><option> bizarres </option></select>
-        </div>
+        ${BizarresDropdown()}
   
         <div class="eateryDropdown dropdown">
           <select><option> eateries </option></select>
@@ -41,5 +41,5 @@ export const HolidayRoad = () => {
   
   
       </div>
-      `
-}
+      `;
+};
