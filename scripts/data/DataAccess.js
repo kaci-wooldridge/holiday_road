@@ -8,7 +8,7 @@ export const fetchParks = () => {
     return fetch(`${parkAPI}`)
         .then((response) => response.json())
         .then((park) => {
-            applicationState.parks = park;
+            applicationState.parks = park.data;
         });
 };
 
