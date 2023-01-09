@@ -1,4 +1,4 @@
-import { getParks, transientItineraryObj, fetchWeather } from "../data/DataAccess.js";
+import { getParks } from "../data/DataAccess.js";
 
 export const ParkProvider = () => {
 	const parks = getParks()
@@ -16,38 +16,36 @@ export const ParkProvider = () => {
 </div>`
 }
 
-const pushParkObjToTransientItineraryObj = (parkKode) => {
-    transientItineraryObj.parkId = parkKode
+// const pushParkObjToTransientItineraryObj = (parkKode) => {
+//     transientItineraryObj.parkId = parkKode
 
-    const parks = getParks()
+//     const parks = getParks()
 
-    parks.map(
-        (park) => {
-            if (parkKode === park.parkCode) {
-                transientItineraryObj.lat = park.latitude,
-                transientItineraryObj.lon = park.longitude
-            }
-        }
-    )
+//     parks.map(
+//         (park) => {
+//             if (parkKode === park.parkCode) {
+//                 transientItineraryObj.lat = park.latitude,
+//                 transientItineraryObj.lon = park.longitude
+//             }
+//         }
+//     )
     
-    const lattitude = transientItineraryObj.lat
-    const longitude = transientItineraryObj.lon
+//     const lattitude = transientItineraryObj.lat
+//     const longitude = transientItineraryObj.lon
 
-    fetchWeather(lattitude, longitude)
-}
+//     fetchWeather(lattitude, longitude)
+// }
 
-export const DisplayPark = () => {
-    const parks = getParks()
-    return parks.map(
-        (park) => {
-            if (park.parkCode === transientItineraryObj.parkId) {
-                return `${park.fullName}`
-            }
-        }
-    ).join("")
-
-
-}
+// export const DisplayPark = () => {
+//     const parks = getParks()
+//     return parks.map(
+//         (park) => {
+//             if (park.parkCode === transientItineraryObj.parkId) {
+//                 return `${park.fullName}`
+//             }
+//         }
+//     ).join("")
+// }
 
 export const DisplayWeather = () => {
 
@@ -56,20 +54,24 @@ export const DisplayWeather = () => {
 document.addEventListener(
     "change",
     (event) => {
-
-        const mainContainer = document.querySelector('#container')
+        
+        const parkContainer = document.querySelector(".chosenPark")
+        const parks = getParks()
 
         const clicked = event.target
 
         if (clicked.id === "parks__dropdown") {
-            const parkCode = clicked.value
+            const parkKode = clicked.value
 
-            pushParkObjToTransientItineraryObj(parkCode)
+            //pushParkObjToTransientItineraryObj(parkKode)
 
-            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            parkContainer.innerHTML = parks.map(
+            (park) => {
+                if (parkKode === park.parkCode) {
+                    return park.fullName
+                }
+            }
+            ).join("")
         }
-
     }
 )
-
-

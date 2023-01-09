@@ -1,5 +1,5 @@
 const applicationState = {}
-export const transientItineraryObj = {}
+//export const transientItineraryObj = {}
 const mainContainer = document.querySelector('#container')
 import APIKeys from '../Settings.js'
 

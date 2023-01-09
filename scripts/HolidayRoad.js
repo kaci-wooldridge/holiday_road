@@ -1,5 +1,5 @@
 import { BizarresDropdown } from "./bizarres/BizarresProvider.js";
-import { ParkProvider, DisplayPark } from "./parks/ParkProvider.js";
+import { ParkProvider } from "./parks/ParkProvider.js";
 import { eateryDropdown } from './eateries/EateryProvider.js'
 
 
@@ -18,22 +18,23 @@ export const HolidayRoad = () => {
           <div class="optionsDisplay">
             <h3>Your Itinerary</h3>
             <div class="chosenPark">
-            ${DisplayPark()}
+            
             </div>
             <div class="chosenBizarre">Bizarre </div>
             <div class="chosenEatery">Eatery</div>
             <div class="detailsDisplay"></div>
-  
+            
             <button style="width:100px" class="saveButton">SAV3</button>
-          </div>
-  
-          <div class="weatherDisplay">
-              <h3>Weather</h3>
-          </div>
-          </div>
-            <div class="savedOptions">
-              <h3>Saved Itinerary List</h3>
             </div>
-      </div>
-      `
-}
+            
+            <div class="weatherDisplay">
+            <h3>Weather</h3>
+            </div>
+            </div>
+            <div class="savedOptions">
+            <h3>Saved Itinerary List</h3>
+            </div>
+            </div>
+            `
+          }
+          
