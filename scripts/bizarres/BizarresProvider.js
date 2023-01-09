@@ -20,10 +20,14 @@ export const BizarresDropdown = () => {
 const mainContainer = document.querySelector("#container");
 
 mainContainer.addEventListener("change", () => {
+    // checking to see if the dropdown has a value, i.e. not the default ""
     const selectedBizarre = document.querySelector(
         "#bizarres__dropdown option:checked"
     );
+
+    // this is the element that shows up in the itinerary
     const itineraryBizarre = document.querySelector(".chosenBizarre");
+
     // default value is blank string, check for truthy value
     if (selectedBizarre.value) {
         itineraryBizarre.innerHTML = selectedBizarre.text;
