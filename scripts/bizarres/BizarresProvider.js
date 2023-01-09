@@ -33,7 +33,7 @@ mainContainer.addEventListener("change", (event) => {
             itineraryBizarre.innerHTML = selectedBizarre.text;
         } else {
             // this is what the itinerary bizarre should show on reset to "Select a Bizarre Destination"
-            itineraryBizarre.innerHTML = "Bizarre";
+            itineraryBizarre.innerHTML = "";
         }
     }
 });
