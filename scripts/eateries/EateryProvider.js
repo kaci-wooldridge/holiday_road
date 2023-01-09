@@ -4,11 +4,10 @@ const mainContainer = document.querySelector('#container')
 
 export const eateryDropdown = () => {
 	const eateries = getEateries()
-
 	return `
-    <div class="dropdown" id="eatery__dropdown">
-        <select>
-            <option value="">Select an Eatery</option>
+    <div class="dropdown">
+        <select id="eatery__dropdown" onchange="">
+            <option disabled hidden selected>Select an Eatery</option>
             ${eateries
 				.map((eatery) => {
 					return `<option value="${eatery.id}">${eatery.businessName}</option>`
@@ -18,3 +17,19 @@ export const eateryDropdown = () => {
     </div>   
     `
 }
+
+mainContainer.addEventListener('change', (changeEvent) => {
+    const eateryContainer = document.querySelector('.chosenEatery')
+    const eateries = getEateries()
+	let chosenEatery = ''
+	if (changeEvent.target.id === 'eatery__dropdown') {
+		chosenEatery = parseInt(changeEvent.target.value)
+        
+		eateryContainer.innerHTML = eateries.map((eatery) =>{
+            if(chosenEatery === eatery.id){
+                return eatery.businessName
+            }
+        })
+        .join("")
+	}
+})

@@ -14,14 +14,17 @@ export const HolidayRoad = () => {
       </div>
       
       <div class="mainContent">
+
         <div class="chosenOptions">
           <div class="optionsDisplay">
             <h3>Your Itinerary</h3>
             
-            <div class="chosenPark chosen">Park</div>
-            <div class="chosenBizarre chosen">Bizarre </div>
-            <div class="chosenEatery chosen">Eatery</div>
-        <div class="detailsDisplay"></div>
+            <div class="chosenPark">Park</div>
+            <div class="chosenBizarre">Bizarre </div>
+            <div class="chosenEatery" id="eatery"></div>
+          </div>
+
+          <div class="detailsDisplay"></div>
   
           <button style="width:100px" class="saveButton">SAV3</button>
           </div>

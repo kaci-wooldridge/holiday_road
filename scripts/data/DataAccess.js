@@ -1,16 +1,18 @@
-const applicationState = {}
+const applicationState = {
+	itinerary: {},
+}
 const mainContainer = document.querySelector('#container')
 import APIKeys from '../Settings.js'
 
 const parkKey = APIKeys.npsKey
 const parkAPI = `https://developer.nps.gov/api/v1/parks?api_key=${parkKey}`
 export const fetchParks = () => {
-    return fetch(`${parkAPI}`)
-        .then((response) => response.json())
-        .then((park) => {
-            applicationState.parks = park.data;
-        });
-};
+	return fetch(`${parkAPI}`)
+		.then((response) => response.json())
+		.then((park) => {
+			applicationState.parks = park.data
+		})
+}
 
 export const getParks = () => {
 	return applicationState.parks.map((p) => ({ ...p }))
@@ -55,3 +57,19 @@ export const fetchEateries = () => {
 export const getEateries = () => {
 	return applicationState.eateries.map((e) => ({ ...e }))
 }
+
+// export const sendItinerary = (info) => {
+//     const fetchOptions = {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(info)
+//     }
+
+//     return fetch(`${API}/itineraries`, fetchOptions)
+//         .then(response => response.json())
+//         .then(() => {
+//             mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+//         })
+// }
