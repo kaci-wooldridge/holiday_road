@@ -1,20 +1,17 @@
 import { getParks } from "../data/DataAccess.js";
 
 export const ParkProvider = () => {
-	const parks = getParks()
+    const parks = getParks();
 
     return `<div class="parkDropdown">
             <select class="dropdown" id="parks__dropdown">
-            <option value="0">Select a Park</option>
-            ${parks.map(
-        (park) => {
-            return `<option value="${park.parkCode}">${park.fullName}</option>`
-        }
-    )
-        }
+            <option value="">Select a Park</option>
+            ${parks.map((park) => {
+                return `<option value="${park.parkCode}">${park.fullName}</option>`;
+            })}
 </select>
-</div>`
-}
+</div>`;
+};
 
 // const pushParkObjToTransientItineraryObj = (parkKode) => {
 //     transientItineraryObj.parkId = parkKode
@@ -29,7 +26,7 @@ export const ParkProvider = () => {
 //             }
 //         }
 //     )
-    
+
 //     const lattitude = transientItineraryObj.lat
 //     const longitude = transientItineraryObj.lon
 
@@ -47,31 +44,25 @@ export const ParkProvider = () => {
 //     ).join("")
 // }
 
-export const DisplayWeather = () => {
+export const DisplayWeather = () => {};
 
-}
+document.addEventListener("change", (event) => {
+    const parkContainer = document.querySelector(".chosenPark");
+    const parks = getParks();
 
-document.addEventListener(
-    "change",
-    (event) => {
-        
-        const parkContainer = document.querySelector(".chosenPark")
-        const parks = getParks()
+    const clicked = event.target;
 
-        const clicked = event.target
+    if (clicked.id === "parks__dropdown") {
+        const parkKode = clicked.value;
 
-        if (clicked.id === "parks__dropdown") {
-            const parkKode = clicked.value
+        //pushParkObjToTransientItineraryObj(parkKode)
 
-            //pushParkObjToTransientItineraryObj(parkKode)
-
-            parkContainer.innerHTML = parks.map(
-            (park) => {
+        parkContainer.innerHTML = parks
+            .map((park) => {
                 if (parkKode === park.parkCode) {
-                    return park.fullName
+                    return park.fullName;
                 }
-            }
-            ).join("")
-        }
+            })
+            .join("");
     }
-)
+});
