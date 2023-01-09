@@ -7,7 +7,7 @@ export const eateryDropdown = () => {
 	return `
     <div class="dropdown">
         <select id="eatery__dropdown" onchange="">
-            <option disabled hidden selected>Select an Eatery</option>
+            <option>Select an Eatery</option>
             ${eateries
 				.map((eatery) => {
 					return `<option value="${eatery.id}">${eatery.businessName}</option>`
@@ -18,12 +18,15 @@ export const eateryDropdown = () => {
     `
 }
 
+
+
 mainContainer.addEventListener('change', (changeEvent) => {
     const eateryContainer = document.querySelector('.chosenEatery')
     const eateries = getEateries()
 	let chosenEatery = ''
 	if (changeEvent.target.id === 'eatery__dropdown') {
 		chosenEatery = parseInt(changeEvent.target.value)
+
         
 		eateryContainer.innerHTML = eateries.map((eatery) =>{
             if(chosenEatery === eatery.id){
