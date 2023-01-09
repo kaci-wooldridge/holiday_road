@@ -25,7 +25,7 @@ export const HolidayRoad = () => {
             </div>
 
             <div class="detailsDisplay"></div>
-                <button style="width:100px" class="saveButton">SAV3</button>
+                <button style="width:100px" class="saveButton" disabled>SAV3</button>
             </div>
 
             <div class="weatherDisplay">
@@ -45,28 +45,29 @@ export const HolidayRoad = () => {
 const mainContainer = document.querySelector("#container");
 
 mainContainer.addEventListener("click", (clickEvent) => {
-    if (clickEvent.target.className === "saveButton") {
-        const selectedPark = document.querySelector(
-            "#parks__dropdown option:checked"
-        ).value;
-        const selectedBizarre = document.querySelector(
-            "#bizarres__dropdown option:checked"
-        ).value;
-        const selectedEatery = document.querySelector(
-            "#eatery__dropdown option:checked"
-        ).value;
+    const selectedPark = document.querySelector(
+        "#parks__dropdown option:checked"
+    ).value;
+    const selectedBizarre = document.querySelector(
+        "#bizarres__dropdown option:checked"
+    ).value;
+    const selectedEatery = document.querySelector(
+        "#eatery__dropdown option:checked"
+    ).value;
 
-        if (selectedPark && selectedBizarre && selectedEatery) {
-            const tripObj = {
-                parkCode: selectedPark,
-                bizarreId: parseInt(selectedBizarre),
-                eateryId: parseInt(selectedEatery),
-            };
-            sendItinerary(tripObj);
-        } else {
-            alert(
-                "Please choose one of each of the following:\n - a park\n - a bizarre destination \n - an eatery"
-            );
-        }
+    const saveButton = document.querySelector(".saveButton");
+    if (selectedPark && selectedBizarre && selectedEatery) {
+        saveButton.disabled = false;
+    } else {
+        saveButton.disabled = true;
+    }
+
+    if (clickEvent.target.className === "saveButton") {
+        const tripObj = {
+            parkCode: selectedPark,
+            bizarreId: parseInt(selectedBizarre),
+            eateryId: parseInt(selectedEatery),
+        };
+        sendItinerary(tripObj);
     }
 });
