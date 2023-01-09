@@ -1,6 +1,5 @@
-const applicationState = {
-	itinerary: {},
-}
+const applicationState = {}
+//export const transientItineraryObj = {}
 const mainContainer = document.querySelector('#container')
 import APIKeys from '../Settings.js'
 
@@ -18,15 +17,25 @@ export const getParks = () => {
 	return applicationState.parks.map((p) => ({ ...p }))
 }
 
-const weatherKey = APIKeys.weatherKey
-const weatherAPI = `https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=${weatherKey}`
-export const fetchWeather = () => {
+export const fetchWeather = (lat, lon) => {
+	const weatherKey = APIKeys.weatherKey
+	const weatherAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherKey}`
 	return fetch(weatherAPI)
 		.then((response) => response.json())
 		.then((weather) => {
 			applicationState.weathers = weather
 		})
 }
+
+// const weatherKey = APIKeys.weatherKey
+// export const weatherAPI = `https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=${weatherKey}`
+// export const fetchWeather = () => {
+// 	return fetch(weatherAPI)
+// 		.then((response) => response.json())
+// 		.then((weather) => {
+// 			applicationState.weathers = weather
+// 		})
+// }
 
 export const getWeather = () => {
 	return applicationState.weathers.map((w) => ({ ...w }))
