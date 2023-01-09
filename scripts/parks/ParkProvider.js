@@ -1,7 +1,7 @@
 import { getParks, transientItineraryObj, fetchWeather } from "../data/DataAccess.js";
 
 export const ParkProvider = () => {
-    const parks = getParks();
+	const parks = getParks()
 
     return `<div class="parkDropdown">
             <select class="dropdown" id="parks__dropdown">

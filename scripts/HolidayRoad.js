@@ -11,6 +11,8 @@ export const HolidayRoad = () => {
         ${ParkProvider()}
         ${BizarresDropdown()}
         ${eateryDropdown()}
+      </div>
+      
       <div class="mainContent">
         <div class="chosenOptions">
           <div class="optionsDisplay">
