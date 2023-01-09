@@ -22,7 +22,13 @@ const mainContainer = document.querySelector("#container");
 mainContainer.addEventListener("change", () => {
     const selectedBizarre = document.querySelector(
         "#bizarres__dropdown option:checked"
-    ).text;
-
-    document.querySelector(".chosenBizarre").innerHTML = selectedBizarre;
+    );
+    const itineraryBizarre = document.querySelector(".chosenBizarre");
+    // default value is blank string, check for truthy value
+    if (selectedBizarre.value) {
+        itineraryBizarre.innerHTML = selectedBizarre.text;
+    } else {
+        // this is what the itinerary bizarre should show on reset to "Select a Bizarre Destination"
+        itineraryBizarre.innerHTML = "Bizarre";
+    }
 });
