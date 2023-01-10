@@ -1,4 +1,4 @@
-const applicationState = {};
+export const applicationState = {};
 //export const transientItineraryObj = {}
 const mainContainer = document.querySelector("#container");
 import APIKeys from "../Settings.js";
@@ -24,8 +24,8 @@ export const fetchWeather = (lat, lon) => {
     const weatherAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherKey}`;
     return fetch(weatherAPI)
         .then((response) => response.json())
-        .then((weather) => {
-            applicationState.weathers = weather;
+        .then((weathers) => {
+            applicationState.weather = weathers;    
         });
 };
 
@@ -40,7 +40,7 @@ export const fetchWeather = (lat, lon) => {
 // }
 
 export const getWeather = () => {
-    return applicationState.weathers.map((w) => ({ ...w }));
+    return applicationState.weather.map((w) => ({ ...w }));
 };
 
 const bizarresAPI = `http://holidayroad.nss.team/bizarreries`;

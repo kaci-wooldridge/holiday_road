@@ -17,6 +17,24 @@
       "bizarreId": 11,
       "eateryId": 11,
       "id": 3
+    },
+    {
+      "parkCode": "afam",
+      "bizarreId": 12,
+      "eateryId": 25,
+      "id": 4
+    },
+    {
+      "parkCode": "alpo",
+      "bizarreId": 3,
+      "eateryId": null,
+      "id": 5
+    },
+    {
+      "parkCode": "agfo",
+      "bizarreId": 6,
+      "eateryId": 17,
+      "id": 6
     }
   ]
 }

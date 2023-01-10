@@ -1,4 +1,4 @@
-import { getParks } from "../data/DataAccess.js";
+import { getParks, fetchWeather, getWeather, applicationState } from "../data/DataAccess.js";
 
 export const ParkProvider = () => {
     const parks = getParks();
@@ -7,8 +7,8 @@ export const ParkProvider = () => {
             <select class="dropdown" id="parks__dropdown">
             <option value="">Select a Park</option>
             ${parks.map((park) => {
-                return `<option value="${park.parkCode}">${park.fullName}</option>`;
-            })}
+        return `<option value="${park.parkCode}">${park.fullName}</option>`;
+    })}
 </select>
 </div>`;
 };
@@ -44,25 +44,46 @@ export const ParkProvider = () => {
 //     ).join("")
 // }
 
-export const DisplayWeather = () => {};
+//export const DisplayWeather = () => { };
 
 document.addEventListener("change", (event) => {
+
+    const weatherContainer = document.querySelector(".parkWeather")
     const parkContainer = document.querySelector(".chosenPark");
     const parks = getParks();
-
+    
     const clicked = event.target;
-
+    
     if (clicked.id === "parks__dropdown") {
         const parkKode = clicked.value;
-
-        //pushParkObjToTransientItineraryObj(parkKode)
-
+        
         parkContainer.innerHTML = parks
-            .map((park) => {
+        .map((park) => {
+            if (parkKode === park.parkCode) {
+                return park.fullName;
+            }
+        })
+        .join("");
+
+        let lat = null
+        let long = null
+
+        const parkVar = parks.map(
+            (park) => {
                 if (parkKode === park.parkCode) {
-                    return park.fullName;
+                    
+                    lat = park.latitude
+                    long = park.longitude
+
+                    fetchWeather(lat, long)
+                    .then(() => getWeather())
+                    
+                    //const parkWeather = fetchWeather(park.latitude, park.longitude)
+                   // const weather = getWeather()
                 }
-            })
-            .join("");
+            }
+            )
+        //const weather = getWeather()
+
     }
 });
