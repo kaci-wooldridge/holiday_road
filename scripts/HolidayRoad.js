@@ -1,48 +1,46 @@
-import { BizarresDropdown } from "./bizarres/BizarresProvider.js";
-import { ParkProvider } from "./parks/ParkProvider.js";
-import { eateryDropdown } from "./eateries/EateryProvider.js";
-import { sendItineraries } from "./data/DataAccess.js";
-import { itineraryList } from "./Itinerary.js";
+import { BizarresDropdown } from './bizarres/BizarresProvider.js'
+import { ParkProvider } from './parks/ParkProvider.js'
+import { eateryDropdown } from './eateries/EateryProvider.js'
+import { sendItineraries } from './data/DataAccess.js'
+import { itineraryList } from './Itinerary.js'
 
 export const HolidayRoad = () => {
-    return `
-    <h2>Holiday Road</h2>
+	return `
+  <h2>Holiday Road</h2>
+  <div class="dropdownBoxes">
+      ${ParkProvider()}
+      ${BizarresDropdown()}
+      ${eateryDropdown()}
+  </div>
 
-    <div class="dropdownBoxes">
-        ${ParkProvider()}
-        ${BizarresDropdown()}
-        ${eateryDropdown()}
+  <div class="mainContent">
+    <div class="chosenOptions">
+
+      <div class="optionsDisplay">
+        <h3>Your Itinerary</h3>
+        <div class="chosenPark"></div>
+        <div class="chosenBizarre"></div>
+        <div class="chosenEatery"></div>
+      </div>
+
+      <div class="detailsDisplay"></div>
+
+      <div class="buttonContainer">
+          <button class="saveButton" disabled>Save Trip</button>
+      </div>
+
+      <div class="weatherDisplay">
+          <h3>Weather</h3>
+      </div>
     </div>
-    
-    <div class="mainContent">
 
-        <div class="chosenOptions">
-            <div class="optionsDisplay">
-                <h3>Your Itinerary</h3>
-                
-                <div class="chosenPark"></div>
-                <div class="chosenBizarre"></div>
-                <div class="chosenEatery"></div>
-            </div>
-
-            <div class="detailsDisplay"></div>
-                <button class="saveButton" disabled>Save Trip</button>
-            </div>
-
-            <div class="weatherDisplay">
-                <h3>Weather</h3>
-            </div>
-
-        </div>
-
-        <div class="savedOptions">
-          <h3>Saved Itinerary List</h3>
-          <div class="savedItineraryList">${itineraryList()}</div>
-        </div>
-
+    <div class="savedOptions">
+      <h3>Saved Itinerary List</h3>
+      <div class="savedItineraryList">${itineraryList()}</div>
     </div>
-    `;
-};
+  </div>
+  `
+}
 
 export const DetailsButton = (resource) => {
     /*
@@ -93,19 +91,19 @@ mainContainer.addEventListener("change", (clickEvent) => {
         "#eatery__dropdown option:checked"
     ).value;
 
-    const saveButton = document.querySelector(".saveButton");
-    if (selectedPark && selectedBizarre && selectedEatery) {
-        saveButton.disabled = false;
-    } else {
-        saveButton.disabled = true;
-    }
+	const saveButton = document.querySelector('.saveButton')
+	if (selectedPark && selectedBizarre && selectedEatery) {
+		saveButton.disabled = false
+	} else {
+		saveButton.disabled = true
+	}
 
-    if (clickEvent.target.className === "saveButton") {
-        const tripObj = {
-            parkCode: selectedPark,
-            bizarreId: parseInt(selectedBizarre),
-            eateryId: parseInt(selectedEatery),
-        };
-        sendItineraries(tripObj);
-    }
-});
+	if (clickEvent.target.className === 'saveButton') {
+		const tripObj = {
+			parkCode: selectedPark,
+			bizarreId: parseInt(selectedBizarre),
+			eateryId: parseInt(selectedEatery),
+		}
+		sendItineraries(tripObj)
+	}
+})
