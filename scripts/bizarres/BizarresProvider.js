@@ -32,7 +32,7 @@ mainContainer.addEventListener("change", (event) => {
         // default value is blank string, check for truthy value
         if (selectedBizarre.value) {
             itineraryBizarre.innerHTML =
-                selectedBizarre.text + DetailsButton("bizarres");
+                selectedBizarre.text + DetailsButton("bizarre");
         } else {
             // this is what the itinerary bizarre should show on reset to "Select a Bizarre Destination"
             itineraryBizarre.innerHTML = "";
@@ -41,7 +41,7 @@ mainContainer.addEventListener("change", (event) => {
 });
 
 mainContainer.addEventListener("click", (clickEvent) => {
-    if (clickEvent.target.id === "bizarres__details__button") {
+    if (clickEvent.target.id === "bizarre__details__button") {
         // find the bizarres object
         const bizarres = getBizarres();
 
