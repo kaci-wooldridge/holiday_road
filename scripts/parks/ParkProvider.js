@@ -1,16 +1,19 @@
 import { getParks } from "../data/DataAccess.js";
+import { DetailsButton } from "../HolidayRoad.js";
 
 export const ParkProvider = () => {
     const parks = getParks();
 
-    return `<div class="parkDropdown">
+    return `
+        <div class="parkDropdown">
             <select class="dropdown" id="parks__dropdown">
-            <option value="">Select a Park</option>
-            ${parks.map((park) => {
-                return `<option value="${park.parkCode}">${park.fullName}</option>`;
-            })}
-</select>
-</div>`;
+                <option value="">Select a Park</option>
+                ${parks.map((park) => {
+                    return `<option value="${park.parkCode}">${park.fullName}</option>`;
+                })}
+            </select>
+        </div>
+    `;
 };
 
 // const pushParkObjToTransientItineraryObj = (parkKode) => {
@@ -57,12 +60,13 @@ document.addEventListener("change", (event) => {
 
         //pushParkObjToTransientItineraryObj(parkKode)
 
-        parkContainer.innerHTML = parks
-            .map((park) => {
-                if (parkKode === park.parkCode) {
-                    return park.fullName;
-                }
-            })
-            .join("");
+        parkContainer.innerHTML =
+            parks
+                .map((park) => {
+                    if (parkKode === park.parkCode) {
+                        return park.fullName;
+                    }
+                })
+                .join("") + DetailsButton("parks");
     }
 });
