@@ -82,7 +82,7 @@ export const DetailsButton = (resource) => {
 
 const mainContainer = document.querySelector("#container");
 
-mainContainer.addEventListener("click", (clickEvent) => {
+mainContainer.addEventListener("change", (clickEvent) => {
     const selectedPark = document.querySelector(
         "#parks__dropdown option:checked"
     ).value;
