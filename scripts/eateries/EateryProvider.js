@@ -33,12 +33,12 @@ mainContainer.addEventListener("change", (changeEvent) => {
                         return eatery.businessName;
                     }
                 })
-                .join("") + DetailsButton("eateries");
+                .join("") + DetailsButton("eatery");
     }
 });
 
 mainContainer.addEventListener("click", (clickEvent) => {
-    if (clickEvent.target.id === "eateries__details__button") {
+    if (clickEvent.target.id === "eatery__details__button") {
         // find the eatery object
         const eateries = getEateries();
 
