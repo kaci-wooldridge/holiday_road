@@ -1,4 +1,5 @@
 import { getEateries } from "../data/DataAccess.js";
+import { DetailsButton } from "../HolidayRoad.js";
 
 const mainContainer = document.querySelector("#container");
 
@@ -25,12 +26,41 @@ mainContainer.addEventListener("change", (changeEvent) => {
     if (changeEvent.target.id === "eatery__dropdown") {
         chosenEatery = parseInt(changeEvent.target.value);
 
-        eateryContainer.innerHTML = eateries
-            .map((eatery) => {
-                if (chosenEatery === eatery.id) {
-                    return eatery.businessName;
-                }
-            })
-            .join("");
+        eateryContainer.innerHTML =
+            eateries
+                .map((eatery) => {
+                    if (chosenEatery === eatery.id) {
+                        return eatery.businessName;
+                    }
+                })
+                .join("") + DetailsButton("eateries");
+    }
+});
+
+mainContainer.addEventListener("click", (clickEvent) => {
+    if (clickEvent.target.id === "eateries__details__button") {
+        // find the eatery object
+        const eateries = getEateries();
+
+        const selectedEatery = document.querySelector(
+            "#eatery__dropdown option:checked"
+        );
+
+        const eateryObj = eateries.find(
+            (eatery) => eatery.id === parseInt(selectedEatery.value)
+        );
+
+        let alertText = `${eateryObj.businessName}
+${eateryObj.city}, ${eateryObj.state}
+
+${eateryObj.description}
+`;
+
+        // const amenitiesText = DisplayAmenities(eateryObj);
+        // if (amenitiesText) {
+        //     alertText += amenitiesText;
+        // }
+
+        window.alert(alertText);
     }
 });

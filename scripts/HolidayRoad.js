@@ -26,7 +26,7 @@ export const HolidayRoad = () => {
       <div class="detailsDisplay"></div>
 
       <div class="buttonContainer">
-          <button style="width:100px" class="saveButton" disabled>SAV3</button>
+          <button class="saveButton" disabled>Save Trip</button>
       </div>
 
       <div class="weatherDisplay">
@@ -42,7 +42,43 @@ export const HolidayRoad = () => {
   `
 }
 
-const mainContainer = document.querySelector('#container')
+export const DetailsButton = (resource) => {
+    /*
+        Returns a "details" button for a given resource
+
+            params:
+                resource (string): ex. "eateries", "parks", or "bizarres"
+    */
+    return `
+        <button class="details__button" id="${resource}__details__button">Details</button>
+    `;
+};
+
+// NOTE: "ameneties" property is spelled wrong in the API
+// export const DisplayAmenities = (attractionObj) => {
+//     /*
+//         loop through all of the ameneties on the object
+//         and get a list of the ones that are available (i.e "key": true)
+//     */
+//     const availableAmenities = [];
+//     for (const key of Object.keys(attractionObj.ameneties)) {
+//         if (attractionObj.ameneties[key]) {
+//             availableAmenities.push(key);
+//         }
+//     }
+//     /*
+//         blank array is actually a truthy value
+//         however, if length = 0 would be falsy
+//     */
+//     if (availableAmenities.length) {
+//         return `
+// Amenities:
+//     ${availableAmenities.join("\n")}
+// `;
+//     }
+// };
+
+const mainContainer = document.querySelector("#container");
 
 mainContainer.addEventListener('click', (clickEvent) => {
 	const selectedPark = document.querySelector(
