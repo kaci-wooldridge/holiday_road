@@ -1,4 +1,5 @@
 import { getEateries } from "../data/DataAccess.js";
+import { DetailsButton } from "../HolidayRoad.js";
 
 const mainContainer = document.querySelector("#container");
 
@@ -25,12 +26,13 @@ mainContainer.addEventListener("change", (changeEvent) => {
     if (changeEvent.target.id === "eatery__dropdown") {
         chosenEatery = parseInt(changeEvent.target.value);
 
-        eateryContainer.innerHTML = eateries
-            .map((eatery) => {
-                if (chosenEatery === eatery.id) {
-                    return eatery.businessName;
-                }
-            })
-            .join("");
+        eateryContainer.innerHTML =
+            eateries
+                .map((eatery) => {
+                    if (chosenEatery === eatery.id) {
+                        return eatery.businessName;
+                    }
+                })
+                .join("") + DetailsButton("eateries");
     }
 });
