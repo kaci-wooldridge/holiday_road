@@ -1,7 +1,8 @@
 import { BizarresDropdown } from "./bizarres/BizarresProvider.js";
 import { ParkProvider } from "./parks/ParkProvider.js";
 import { eateryDropdown } from "./eateries/EateryProvider.js";
-import { sendItinerary } from "./data/DataAccess.js";
+import { sendItineraries } from "./data/DataAccess.js";
+import { itineraryList } from "./Itinerary.js";
 
 export const HolidayRoad = () => {
     return `
@@ -35,7 +36,8 @@ export const HolidayRoad = () => {
         </div>
 
         <div class="savedOptions">
-            <h3>Saved Itinerary List</h3>
+          <h3>Saved Itinerary List</h3>
+          <div class="savedItineraryList">${itineraryList()}</div>
         </div>
 
     </div>
@@ -104,6 +106,6 @@ mainContainer.addEventListener("click", (clickEvent) => {
             bizarreId: parseInt(selectedBizarre),
             eateryId: parseInt(selectedEatery),
         };
-        sendItinerary(tripObj);
+        sendItineraries(tripObj);
     }
 });
