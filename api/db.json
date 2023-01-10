@@ -17,6 +17,24 @@
       "bizarreId": 11,
       "eateryId": 11,
       "id": 3
+    },
+    {
+      "parkCode": "acad",
+      "bizarreId": 3,
+      "eateryId": 5,
+      "id": 4
+    },
+    {
+      "parkCode": "afam",
+      "bizarreId": 3,
+      "eateryId": 5,
+      "id": 5
+    },
+    {
+      "parkCode": "acad",
+      "bizarreId": 2,
+      "eateryId": 6,
+      "id": 6
     }
   ]
 }
