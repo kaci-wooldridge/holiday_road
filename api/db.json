@@ -35,6 +35,18 @@
       "bizarreId": 2,
       "eateryId": 6,
       "id": 6
+    },
+    {
+      "parkCode": "abli",
+      "bizarreId": 2,
+      "eateryId": 2,
+      "id": 7
+    },
+    {
+      "parkCode": "abli",
+      "bizarreId": 3,
+      "eateryId": 5,
+      "id": 8
     }
   ]
 }

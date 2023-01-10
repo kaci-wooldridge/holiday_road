@@ -68,7 +68,7 @@ document.addEventListener("change", (event) => {
         let lat = null
         let long = null
 
-        const parkVar = parks.map(
+        parks.map(
             (park) => {
                 if (parkKode === park.parkCode) {
                     
