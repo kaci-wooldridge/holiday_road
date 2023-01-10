@@ -76,18 +76,18 @@ const mainContainer = document.querySelector("#container");
 mainContainer.addEventListener("click", (clickEvent) => {
     if (clickEvent.target.id === "park__details__button") {
         // find the parks object
-        const parks = getparks();
+        const parks = getParks();
 
         const selectedPark = document.querySelector(
             "#parks__dropdown option:checked"
         );
 
         const parkObj = parks.find(
-            (park) => park.id === parseInt(selectedPark.value)
+            (park) => park.parkCode === selectedPark.value
         );
 
-        let alertText = `${parkObj.name}
-${parkObj.city}, ${parkObj.state}
+        let alertText = `${parkObj.fullName}
+${parkObj.latLong} (${parkObj.states})
 
 ${parkObj.description}
         `;

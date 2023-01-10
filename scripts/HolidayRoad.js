@@ -100,6 +100,28 @@ mainContainer.addEventListener("change", (clickEvent) => {
         saveButton.disabled = true;
     }
 
+    const parkDetailsButton = mainContainer.querySelector(".chosenPark");
+    const bizarreDetailsButton = mainContainer.querySelector(".chosenBizarre");
+    const eateryDetailsButton = mainContainer.querySelector(".chosenEatery");
+
+    if (!selectedPark) {
+        parkDetailsButton.hidden = true;
+    } else {
+        parkDetailsButton.hidden = false;
+    }
+
+    if (!selectedBizarre) {
+        bizarreDetailsButton.hidden = true;
+    } else {
+        bizarreDetailsButton.hidden = false;
+    }
+
+    if (!selectedEatery) {
+        eateryDetailsButton.hidden = true;
+    } else {
+        eateryDetailsButton.hidden = false;
+    }
+
     if (clickEvent.target.className === "saveButton") {
         const tripObj = {
             parkCode: selectedPark,
