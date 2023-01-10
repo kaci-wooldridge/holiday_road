@@ -80,16 +80,16 @@ export const DetailsButton = (resource) => {
 
 const mainContainer = document.querySelector("#container");
 
-mainContainer.addEventListener('click', (clickEvent) => {
-	const selectedPark = document.querySelector(
-		'#parks__dropdown option:checked'
-	).value
-	const selectedBizarre = document.querySelector(
-		'#bizarres__dropdown option:checked'
-	).value
-	const selectedEatery = document.querySelector(
-		'#eatery__dropdown option:checked'
-	).value
+mainContainer.addEventListener("change", (clickEvent) => {
+    const selectedPark = document.querySelector(
+        "#parks__dropdown option:checked"
+    ).value;
+    const selectedBizarre = document.querySelector(
+        "#bizarres__dropdown option:checked"
+    ).value;
+    const selectedEatery = document.querySelector(
+        "#eatery__dropdown option:checked"
+    ).value;
 
 	const saveButton = document.querySelector('.saveButton')
 	if (selectedPark && selectedBizarre && selectedEatery) {
