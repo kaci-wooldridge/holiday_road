@@ -6,22 +6,24 @@ import { itineraryList } from './Itinerary.js'
 
 export const HolidayRoad = () => {
 	return `
-  <h2>Holiday Road</h2>
-  <div class="dropdownBoxes">
-      ${ParkProvider()}
-      ${BizarresDropdown()}
-      ${eateryDropdown()}
-  </div>
+    <div class="header">
+        <h2 class="headerText">Holiday Road</h2>
+        <div class="dropdownBoxes">
+            ${ParkProvider()}
+            ${BizarresDropdown()}
+            ${eateryDropdown()}
+        </div>
+    </div>
 
-  <div class="mainContent">
-    <div class="chosenOptions">
+    <div class="mainContent">
+        <div class="chosenOptions">
 
-      <div class="optionsDisplay">
-        <h3>Your Itinerary</h3>
-        <div class="chosenPark"></div>
-        <div class="chosenBizarre"></div>
-        <div class="chosenEatery"></div>
-      </div>
+        <div class="optionsDisplay">
+            <h3>Your Itinerary</h3>
+            <div class="chosenPark"></div>
+            <div class="chosenBizarre"></div>
+            <div class="chosenEatery"></div>
+        </div>
 
       <div class="detailsDisplay"></div>
 
@@ -43,16 +45,16 @@ export const HolidayRoad = () => {
 }
 
 export const DetailsButton = (resource) => {
-    /*
+	/*
         Returns a "details" button for a given resource
 
             params:
                 resource (string): ex. "eateries", "parks", or "bizarres"
     */
-    return `
+	return `
         <button class="details__button" id="${resource}__details__button">Details</button>
-    `;
-};
+    `
+}
 
 // NOTE: "ameneties" property is spelled wrong in the API
 // export const DisplayAmenities = (attractionObj) => {
@@ -78,18 +80,18 @@ export const DetailsButton = (resource) => {
 //     }
 // };
 
-const mainContainer = document.querySelector("#container");
+const mainContainer = document.querySelector('#container')
 
-mainContainer.addEventListener("change", (clickEvent) => {
-    const selectedPark = document.querySelector(
-        "#parks__dropdown option:checked"
-    ).value;
-    const selectedBizarre = document.querySelector(
-        "#bizarres__dropdown option:checked"
-    ).value;
-    const selectedEatery = document.querySelector(
-        "#eatery__dropdown option:checked"
-    ).value;
+mainContainer.addEventListener('change', (clickEvent) => {
+	const selectedPark = document.querySelector(
+		'#parks__dropdown option:checked'
+	).value
+	const selectedBizarre = document.querySelector(
+		'#bizarres__dropdown option:checked'
+	).value
+	const selectedEatery = document.querySelector(
+		'#eatery__dropdown option:checked'
+	).value
 
 	const saveButton = document.querySelector('.saveButton')
 	if (selectedPark && selectedBizarre && selectedEatery) {

@@ -7,6 +7,21 @@
     flex-flow: column wrap;
 }
 
+.header {
+    height: 500px;
+    background-image: url("https://icolorpalette.com/download/imagepost/waters-3161063_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.headerText{
+    color: #0c0d04;
+    font-size: 50px;
+    padding-left: 20px;
+    text-shadow: 2px 2px 6px gray;
+
+}
+
 .dropdownBoxes{
     display: flex;
     flex-direction: row;
@@ -88,3 +103,4 @@
   background-color: #cccccc;
   color: #666666;
 }
+
