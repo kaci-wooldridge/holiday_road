@@ -100,6 +100,7 @@ mainContainer.addEventListener("change", (clickEvent) => {
         saveButton.disabled = true;
     }
 
+    // hide/show the details buttons if a selection is not made for that attraction
     const parkDetailsButton = mainContainer.querySelector(".chosenPark");
     const bizarreDetailsButton = mainContainer.querySelector(".chosenBizarre");
     const eateryDetailsButton = mainContainer.querySelector(".chosenEatery");
