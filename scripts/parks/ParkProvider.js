@@ -67,6 +67,36 @@ document.addEventListener("change", (event) => {
                         return park.fullName;
                     }
                 })
-                .join("") + DetailsButton("parks");
+                .join("") + DetailsButton("park");
+    }
+});
+
+const mainContainer = document.querySelector("#container");
+
+mainContainer.addEventListener("click", (clickEvent) => {
+    if (clickEvent.target.id === "park__details__button") {
+        // find the parks object
+        const parks = getparks();
+
+        const selectedPark = document.querySelector(
+            "#parks__dropdown option:checked"
+        );
+
+        const parkObj = parks.find(
+            (park) => park.id === parseInt(selectedPark.value)
+        );
+
+        let alertText = `${parkObj.name}
+${parkObj.city}, ${parkObj.state}
+
+${parkObj.description}
+        `;
+
+        // const amenitiesText = DisplayAmenities(parkObj);
+        // if (amenitiesText) {
+        //     alertText += amenitiesText;
+        // }
+
+        window.alert(alertText);
     }
 });
