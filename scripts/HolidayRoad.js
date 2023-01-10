@@ -55,27 +55,28 @@ export const DetailsButton = (resource) => {
 };
 
 // NOTE: "ameneties" property is spelled wrong in the API
-export const DisplayAmenities = (attractionObj) => {
-    /*
-        loop through all of the ameneties on the object
-        and get a list of the ones that are available (i.e "key": true)
-    */
-    const availableAmenities = [];
-    for (const key of Object.keys(attractionObj.ameneties)) {
-        if (attractionObj.ameneties[key]) {
-            availableAmenities.push(key);
-        }
-    }
-    /*
-        blank array is actually a truthy value
-        however, if length = 0 would be falsy
-    */
-    if (availableAmenities.length) {
-        return `
-Amenities:
-    ${availableAmenities.join("\n")}`;
-    }
-};
+// export const DisplayAmenities = (attractionObj) => {
+//     /*
+//         loop through all of the ameneties on the object
+//         and get a list of the ones that are available (i.e "key": true)
+//     */
+//     const availableAmenities = [];
+//     for (const key of Object.keys(attractionObj.ameneties)) {
+//         if (attractionObj.ameneties[key]) {
+//             availableAmenities.push(key);
+//         }
+//     }
+//     /*
+//         blank array is actually a truthy value
+//         however, if length = 0 would be falsy
+//     */
+//     if (availableAmenities.length) {
+//         return `
+// Amenities:
+//     ${availableAmenities.join("\n")}
+// `;
+//     }
+// };
 
 const mainContainer = document.querySelector("#container");
 

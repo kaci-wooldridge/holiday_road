@@ -36,3 +36,31 @@ mainContainer.addEventListener("change", (changeEvent) => {
                 .join("") + DetailsButton("eateries");
     }
 });
+
+mainContainer.addEventListener("click", (clickEvent) => {
+    if (clickEvent.target.id === "eateries__details__button") {
+        // find the eatery object
+        const eateries = getEateries();
+
+        const selectedEatery = document.querySelector(
+            "#eatery__dropdown option:checked"
+        );
+
+        const eateryObj = eateries.find(
+            (eatery) => eatery.id === parseInt(selectedEatery.value)
+        );
+
+        let alertText = `${eateryObj.businessName}
+${eateryObj.city}, ${eateryObj.state}
+
+${eateryObj.description}
+`;
+
+        // const amenitiesText = DisplayAmenities(eateryObj);
+        // if (amenitiesText) {
+        //     alertText += amenitiesText;
+        // }
+
+        window.alert(alertText);
+    }
+});
