@@ -35,6 +35,12 @@
       "bizarreId": 2,
       "eateryId": 6,
       "id": 6
+    },
+    {
+      "parkCode": "adam",
+      "bizarreId": 3,
+      "eateryId": 7,
+      "id": 7
     }
   ]
 }

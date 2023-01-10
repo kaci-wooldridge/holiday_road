@@ -4,8 +4,7 @@ import { DetailsButton } from "../HolidayRoad.js";
 export const ParkProvider = () => {
     const parks = getParks();
 
-    return `
-        <div class="parkDropdown">
+    return `<div class="dropdown">
             <select class="dropdown" id="parks__dropdown">
                 <option value="">Select a Park</option>
                 ${parks.map((park) => {
