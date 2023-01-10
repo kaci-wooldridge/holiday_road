@@ -69,7 +69,7 @@ export const getEateries = () => {
     return applicationState.eateries.map((e) => ({ ...e }));
 };
 
-export const sendItinerary = (info) => {
+export const sendItineraries = (info) => {
     const fetchOptions = {
         method: "POST",
         headers: {
@@ -84,3 +84,15 @@ export const sendItinerary = (info) => {
             mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
         });
 };
+
+export const fetchItineraries = () =>{
+    return fetch(`${API}/itineraries`)
+    .then((response) => response.json())
+    .then((itinerary) => {
+        applicationState.itineraries = itinerary;
+    });
+};
+
+export const getItineraries = () =>{
+    return applicationState.itineraries.map((i) => ({ ...i }))
+}

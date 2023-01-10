@@ -19,21 +19,21 @@
       "id": 3
     },
     {
-      "parkCode": "afam",
-      "bizarreId": 12,
-      "eateryId": 25,
+      "parkCode": "acad",
+      "bizarreId": 3,
+      "eateryId": 5,
       "id": 4
     },
     {
-      "parkCode": "alpo",
+      "parkCode": "afam",
       "bizarreId": 3,
-      "eateryId": null,
+      "eateryId": 5,
       "id": 5
     },
     {
-      "parkCode": "agfo",
-      "bizarreId": 6,
-      "eateryId": 17,
+      "parkCode": "acad",
+      "bizarreId": 2,
+      "eateryId": 6,
       "id": 6
     }
   ]
