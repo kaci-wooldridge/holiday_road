@@ -1,5 +1,5 @@
 import { getParks, fetchWeather, getWeather, applicationState } from "../data/DataAccess.js";
-import { getParks } from "../data/DataAccess.js";
+
 import { DetailsButton } from "../HolidayRoad.js";
 
 export const ParkProvider = () => {
