@@ -5,39 +5,60 @@
 #container{
     display: flex;
     flex-flow: column wrap;
+    color: #f9ffd5;
+}
+
+.header {
+    height: 500px;
+    background-image: url("https://icolorpalette.com/download/imagepost/waters-3161063_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover, 500px;
+    background-position: center;
+}
+
+.headerText{
+    color: #f9ffd5;
+    font-size: 50px;
+    padding-left: 20px;
+    text-shadow: 2px 2px 5px #3e470ad2;
+
 }
 
 .dropdownBoxes{
+    margin-top: 100px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    
 }
 
 .dropdown select{
     width: 200px;
-    height: 30px;
+    height: 40px;
     text-align: center;
     margin: 25px;
+    background-color: #546c75;
+    color: #f9ffd5;
 }
 
 .mainContent{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    margin: 5px;
+    justify-content: space-between;
     padding: 2px;
-    border: 4px solid black;
     height: auto;
 }
 
 .chosenOptions {
     flex-grow: 1;
     text-align: center;
+    background-color: #3f3c54;
 }
 
 .savedOptions {
     width: 300px;
     text-align: center;
+    background-color: #48520cd2;
 }
 
 .optionsDisplay {
@@ -49,7 +70,7 @@
 }
 
 .details__button {
-    background-color: rgb(0, 170, 255);
+    background-color: #8ac1d7;
     border-radius: 50%;
     color: white;
     text-align: center;
@@ -66,7 +87,7 @@
 .details__button:hover {opacity: 1}
 
 .saveButton {
-    background-color: rgb(0, 255, 136);
+    background-color: #54610e;
     border-radius: 50%;
     color: white;
     text-align: center;
@@ -87,4 +108,8 @@
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
+  cursor: default;
 }
+
+.saveButton:hover[disabled] {opacity: 60%;}
+
