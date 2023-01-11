@@ -1,5 +1,5 @@
 import { BizarresDropdown } from "./bizarres/BizarresProvider.js";
-import { ParkProvider } from "./parks/ParkProvider.js";
+import { ParkProvider, Weather } from "./parks/ParkProvider.js";
 import { eateryDropdown } from "./eateries/EateryProvider.js";
 import { sendItineraries } from "./data/DataAccess.js";
 import { itineraryList } from "./Itinerary.js";
@@ -32,6 +32,7 @@ export const HolidayRoad = () => {
 
             <div class="weatherDisplay">
                 <h3>Weather</h3>
+                ${Weather()}
             </div>
         </div>
 

@@ -29,16 +29,6 @@ export const fetchWeather = (lat, lon) => {
         });
 };
 
-// const weatherKey = APIKeys.weatherKey
-// export const weatherAPI = `https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=${weatherKey}`
-// export const fetchWeather = () => {
-// 	return fetch(weatherAPI)
-// 		.then((response) => response.json())
-// 		.then((weather) => {
-// 			applicationState.weathers = weather
-// 		})
-// }
-
 export const getWeather = () => {
     return applicationState.weather.map((w) => ({ ...w }));
 };

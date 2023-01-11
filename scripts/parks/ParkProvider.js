@@ -9,92 +9,56 @@ export const ParkProvider = () => {
             <select class="dropdown" id="parks__dropdown">
                 <option value="">Select a Park</option>
                 ${parks.map((park) => {
-                    return `<option value="${park.parkCode}">${park.fullName}</option>`;
-                })}
+        return `<option value="${park.id}">${park.fullName}</option>`;
+    })}
             </select>
         </div>
     `;
 };
 
-// const pushParkObjToTransientItineraryObj = (parkKode) => {
-//     transientItineraryObj.parkId = parkKode
+export const Weather = () => {
+    const CURRENT_LOCATION = document.getElementsByClassName('weather-content__overview')[0];
+    const CURRENT_TEMP = document.getElementsByClassName('weather-content__temp')[0];
+    const FORECAST = document.getElementsByClassName('component__forecast-box')[0];
 
-//     const parks = getParks()
-
-//     parks.map(
-//         (park) => {
-//             if (parkKode === park.parkCode) {
-//                 transientItineraryObj.lat = park.latitude,
-//                 transientItineraryObj.lon = park.longitude
-//             }
-//         }
-//     )
-
-//     const lattitude = transientItineraryObj.lat
-//     const longitude = transientItineraryObj.lon
-
-//     fetchWeather(lattitude, longitude)
-// }
-
-// export const DisplayPark = () => {
-//     const parks = getParks()
-//     return parks.map(
-//         (park) => {
-//             if (park.parkCode === transientItineraryObj.parkId) {
-//                 return `${park.fullName}`
-//             }
-//         }
-//     ).join("")
-// }
-
-//export const DisplayWeather = () => { };
+    
+}
 
 document.addEventListener("change", (event) => {
 
     const weatherContainer = document.querySelector(".parkWeather")
     const parkContainer = document.querySelector(".chosenPark");
     const parks = getParks();
-    
-    const clicked = event.target;
-    
-    if (clicked.id === "parks__dropdown") {
-        const parkKode = clicked.value;
-        
-        parkContainer.innerHTML = parks
-        .map((park) => {
-            if (parkKode === park.parkCode) {
-                return park.fullName;
-            }
-        })
-        .join("");
 
-        let lat = null
-        let long = null
+    const clicked = event.target;
+
+    if (clicked.id === "parks__dropdown") {
+        const parkId = clicked.value;
+
+        parkContainer.innerHTML = parks
+            .map((park) => {
+                if (parkId === park.id) {
+                    return park.fullName;
+                }
+            })
+            .join("");
 
         parks.map(
             (park) => {
-                if (parkKode === park.parkCode) {
-                    
-                    lat = park.latitude
-                    long = park.longitude
+                if (parkId === park.id) {
+
+                    const lat = park.latitude
+                    const long = park.longitude
 
                     fetchWeather(lat, long)
-                    .then(() => getWeather())
-                    
-                    //const parkWeather = fetchWeather(park.latitude, park.longitude)
-                   // const weather = getWeather()
+                    .then(() => )
                 }
             }
-            )
-        //const weather = getWeather()
-
-
-        //pushParkObjToTransientItineraryObj(parkKode)
-
+        )
         parkContainer.innerHTML =
             parks
                 .map((park) => {
-                    if (parkKode === park.parkCode) {
+                    if (parkId === park.id) {
                         return park.fullName;
                     }
                 })
