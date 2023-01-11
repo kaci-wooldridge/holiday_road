@@ -38,6 +38,16 @@ mainContainer.addEventListener("change", (event) => {
             itineraryBizarre.innerHTML = "";
         }
     }
+
+    // hide/show the details button if a selection is made
+
+    const bizarreDetailsButton = mainContainer.querySelector(".chosenBizarre");
+
+    if (!selectedBizarre) {
+        bizarreDetailsButton.hidden = true;
+    } else {
+        bizarreDetailsButton.hidden = false;
+    }
 });
 
 mainContainer.addEventListener("click", (clickEvent) => {
