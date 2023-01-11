@@ -7,7 +7,7 @@ import { itineraryList } from "./Itinerary.js";
 export const HolidayRoad = () => {
     return `
     <div class="header">
-        <h2 class="headerText">Holiday Road</h2>
+        <h1 class="headerText">Holiday Road</h1>
         <div class="dropdownBoxes">
             ${ParkProvider()}
             ${BizarresDropdown()}
@@ -19,7 +19,7 @@ export const HolidayRoad = () => {
         <div class="chosenOptions">
 
             <div class="optionsDisplay">
-                <h3>Your Itinerary</h3>
+                <h1>Your Itinerary</h1>
                 <div class="chosenPark"></div>
                 <div class="chosenBizarre"></div>
                 <div class="chosenEatery"></div>
@@ -32,12 +32,12 @@ export const HolidayRoad = () => {
             </div>
 
             <div class="weatherDisplay">
-                <h3>Weather</h3>
+                <h2>Weather</h2>
             </div>
         </div>
 
         <div class="savedOptions">
-            <h3>Saved Itinerary List</h3>
+            <h1>Saved Itinerary List</h1>
             <div class="savedItineraryList">${itineraryList()}</div>
         </div>
     </div>`;
