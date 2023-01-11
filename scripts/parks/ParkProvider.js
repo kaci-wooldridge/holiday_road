@@ -68,6 +68,14 @@ document.addEventListener("change", (event) => {
                 })
                 .join("") + DetailsButton("park");
     }
+
+    const parkDetailsButton = mainContainer.querySelector(".chosenPark");
+
+    if (!selectedPark) {
+        parkDetailsButton.hidden = true;
+    } else {
+        parkDetailsButton.hidden = false;
+    }
 });
 
 const mainContainer = document.querySelector("#container");

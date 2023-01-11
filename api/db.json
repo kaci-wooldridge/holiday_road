@@ -41,6 +41,18 @@
       "bizarreId": 3,
       "eateryId": 7,
       "id": 7
+    },
+    {
+      "parkCode": "agfo",
+      "bizarreId": 8,
+      "eateryId": 11,
+      "id": 8
+    },
+    {
+      "parkCode": "alca",
+      "bizarreId": 11,
+      "eateryId": 15,
+      "id": 9
     }
   ]
 }
