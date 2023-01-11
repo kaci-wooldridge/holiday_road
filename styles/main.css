@@ -9,6 +9,30 @@
     font-family: 'Bodoni Std', sans-serif;
 }
 
+.navElements {
+    list-style-type: none;
+    margin: 0;
+    padding: 4px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #f9ffd5;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+li {
+    float: left;
+}
+  
+a {
+display: block;
+width: 100%;
+background-color: #f9ffd5;
+color: #3f3c54;
+
+}
+
 .header {
     height: 500px;
     background-image: url("https://icolorpalette.com/download/imagepost/waters-3161063_1280.jpg");
