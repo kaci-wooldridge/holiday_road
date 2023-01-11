@@ -35,7 +35,7 @@ const foundItineraries = (itinerary) => {
 
     return (html += `
             <div class="savedPark">${parkName}</div>
-            <div class="savedBizarre">${bizarreName}</div>
+            <div class="savedBizarre">${bizarreName}</div> 
             <div class="savedEatery">${eateryName}</div>
             <button class="itinerary-directions__button">Get Directions</button>
         </div>

@@ -40,7 +40,7 @@ mainContainer.addEventListener("change", (changeEvent) => {
     );
 
     if (eateryContainer.innerHTML && !eateryDetailsButton) {
-        eateryContainer.innerHTML += DetailsButton("eatery");
+        eateryContainer.innerHTML += DetailsButton("eatery") + deleteButton("eatery");
     }
 
     const selectedEatery = document.querySelector(
