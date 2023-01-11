@@ -68,11 +68,14 @@ document.addEventListener("change", (event) => {
             .join("");
     }
 
-    if (parkContainer.innerHTML) {
+    // only add a details button for the park if there ISN'T one
+    const parkDetailsButton = mainContainer.querySelector(
+        "#park__details__button"
+    );
+
+    if (parkContainer.innerHTML && !parkDetailsButton) {
         parkContainer.innerHTML += DetailsButton("park");
     }
-
-    const parkDetailsButton = mainContainer.querySelector(".chosenPark");
 
     const selectedPark = document.querySelector(
         "#parks__dropdown option:checked"
@@ -81,6 +84,7 @@ document.addEventListener("change", (event) => {
     if (!selectedPark) {
         parkDetailsButton.hidden = true;
     } else {
+        // TODO FIXME throwing an error sometimes but why?
         parkDetailsButton.hidden = false;
     }
 });

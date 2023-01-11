@@ -35,11 +35,13 @@ mainContainer.addEventListener("change", (changeEvent) => {
             .join("");
     }
 
-    if (eateryContainer.innerHTML) {
+    const eateryDetailsButton = mainContainer.querySelector(
+        "#eatery__details__button"
+    );
+
+    if (eateryContainer.innerHTML && !eateryDetailsButton) {
         eateryContainer.innerHTML += DetailsButton("eatery");
     }
-
-    const eateryDetailsButton = mainContainer.querySelector(".chosenEatery");
 
     const selectedEatery = document.querySelector(
         "#eatery__dropdown option:checked"
