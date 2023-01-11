@@ -71,6 +71,10 @@ document.addEventListener("change", (event) => {
 
     const parkDetailsButton = mainContainer.querySelector(".chosenPark");
 
+    const selectedPark = document.querySelector(
+        "#parks__dropdown option:checked"
+    );
+
     if (!selectedPark) {
         parkDetailsButton.hidden = true;
     } else {
@@ -98,11 +102,6 @@ ${parkObj.latLong} (${parkObj.states})
 
 ${parkObj.description}
         `;
-
-        // const amenitiesText = DisplayAmenities(parkObj);
-        // if (amenitiesText) {
-        //     alertText += amenitiesText;
-        // }
 
         window.alert(alertText);
     }

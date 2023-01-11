@@ -1,5 +1,5 @@
 import { getEateries } from "../data/DataAccess.js";
-import { DetailsButton } from "../HolidayRoad.js";
+import { DetailsButton, displayAmenities } from "../HolidayRoad.js";
 
 const mainContainer = document.querySelector("#container");
 
@@ -38,6 +38,10 @@ mainContainer.addEventListener("change", (changeEvent) => {
 
     const eateryDetailsButton = mainContainer.querySelector(".chosenEatery");
 
+    const selectedEatery = document.querySelector(
+        "#eatery__dropdown option:checked"
+    );
+
     if (!selectedEatery) {
         eateryDetailsButton.hidden = true;
     } else {
@@ -62,12 +66,12 @@ mainContainer.addEventListener("click", (clickEvent) => {
 ${eateryObj.city}, ${eateryObj.state}
 
 ${eateryObj.description}
-`;
+        `;
 
-        // const amenitiesText = DisplayAmenities(eateryObj);
-        // if (amenitiesText) {
-        //     alertText += amenitiesText;
-        // }
+        const amenitiesText = displayAmenities(eateryObj);
+        if (amenitiesText) {
+            alertText += amenitiesText;
+        }
 
         window.alert(alertText);
     }
