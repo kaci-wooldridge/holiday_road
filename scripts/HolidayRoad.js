@@ -6,6 +6,15 @@ import { itineraryList } from "./Itinerary.js";
 
 export const HolidayRoad = () => {
     return `
+    <div class = "navBar">
+        <ul class="navElements">
+        <li><a href="default.asp">Home</a></li>
+        <li><a href="news.asp">News</a></li>
+        <li><a href="contact.asp">Contact</a></li>
+        <li><a href="about.asp">About</a></li>
+        </ul>
+    </div>  
+
     <div class="header">
         <h1 class="headerText">Holiday Road</h1>
         <div class="dropdownBoxes">
