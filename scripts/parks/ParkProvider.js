@@ -59,14 +59,17 @@ document.addEventListener("change", (event) => {
 
         //pushParkObjToTransientItineraryObj(parkKode)
 
-        parkContainer.innerHTML =
-            parks
-                .map((park) => {
-                    if (parkKode === park.parkCode) {
-                        return park.fullName;
-                    }
-                })
-                .join("") + DetailsButton("park");
+        parkContainer.innerHTML = parks
+            .map((park) => {
+                if (parkKode === park.parkCode) {
+                    return park.fullName;
+                }
+            })
+            .join("");
+    }
+
+    if (parkContainer.innerHTML) {
+        parkContainer.innerHTML += DetailsButton("park");
     }
 
     const parkDetailsButton = mainContainer.querySelector(".chosenPark");
