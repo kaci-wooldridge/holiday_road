@@ -1,5 +1,5 @@
 import { getParks } from "../data/DataAccess.js";
-import { DetailsButton } from "../HolidayRoad.js";
+import { DetailsButton, deleteButton } from "../HolidayRoad.js";
 
 export const ParkProvider = () => {
     const parks = getParks();
@@ -69,7 +69,7 @@ document.addEventListener("change", (event) => {
     }
 
     if (parkContainer.innerHTML) {
-        parkContainer.innerHTML += DetailsButton("park");
+        parkContainer.innerHTML += DetailsButton("park") + deleteButton("park");
     }
 
     const parkDetailsButton = mainContainer.querySelector(".chosenPark");
@@ -109,3 +109,10 @@ ${parkObj.description}
         window.alert(alertText);
     }
 });
+
+mainContainer.addEventListener("click", (clickEvent) =>{
+    const parkContainer = document.querySelector(".chosenPark")
+    if (clickEvent.target.id === "park__delete__button"){
+        parkContainer.innerHTML = ""
+    }
+})

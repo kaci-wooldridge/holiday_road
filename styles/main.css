@@ -143,3 +143,7 @@ color: #3f3c54;
 
 .saveButton:hover[disabled] {opacity: 60%;}
 
+.delete__button:hover {
+    opacity:2;
+}
+

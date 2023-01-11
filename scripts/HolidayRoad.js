@@ -142,3 +142,9 @@ mainContainer.addEventListener("click", (clickEvent) => {
         sendItineraries(itineraryObj);
     }
 });
+
+export const deleteButton = (resource) => {
+    return `
+        <button class="delete__button" id="${resource}__delete__button">x</button>
+    `;
+};

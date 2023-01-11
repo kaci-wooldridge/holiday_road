@@ -1,5 +1,5 @@
 import { getEateries } from "../data/DataAccess.js";
-import { DetailsButton, displayAmenities } from "../HolidayRoad.js";
+import { deleteButton, DetailsButton, displayAmenities } from "../HolidayRoad.js";
 
 const mainContainer = document.querySelector("#container");
 
@@ -36,7 +36,7 @@ mainContainer.addEventListener("change", (changeEvent) => {
     }
 
     if (eateryContainer.innerHTML) {
-        eateryContainer.innerHTML += DetailsButton("eatery");
+        eateryContainer.innerHTML += DetailsButton("eatery") + deleteButton("eatery");
     }
 
     const eateryDetailsButton = mainContainer.querySelector(".chosenEatery");
@@ -79,3 +79,10 @@ ${eateryObj.description}
         window.alert(alertText);
     }
 });
+
+mainContainer.addEventListener("click", (clickEvent) =>{
+    const eateryContainer = document.querySelector(".chosenEatery")
+    if (clickEvent.target.id === "eatery__delete__button"){
+        eateryContainer.innerHTML = ""
+    }
+})
