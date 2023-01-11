@@ -26,14 +26,17 @@ mainContainer.addEventListener("change", (changeEvent) => {
     if (changeEvent.target.id === "eatery__dropdown") {
         chosenEatery = parseInt(changeEvent.target.value);
 
-        eateryContainer.innerHTML =
-            eateries
-                .map((eatery) => {
-                    if (chosenEatery === eatery.id) {
-                        return eatery.businessName;
-                    }
-                })
-                .join("") + DetailsButton("eatery");
+        eateryContainer.innerHTML = eateries
+            .map((eatery) => {
+                if (chosenEatery === eatery.id) {
+                    return eatery.businessName;
+                }
+            })
+            .join("");
+    }
+
+    if (eateryContainer.innerHTML) {
+        eateryContainer.innerHTML += DetailsButton("eatery");
     }
 
     const eateryDetailsButton = mainContainer.querySelector(".chosenEatery");
