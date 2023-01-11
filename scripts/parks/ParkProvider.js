@@ -16,17 +16,8 @@ export const ParkProvider = () => {
     `;
 };
 
-export const Weather = () => {
-    const CURRENT_LOCATION = document.getElementsByClassName('weather-content__overview')[0];
-    const CURRENT_TEMP = document.getElementsByClassName('weather-content__temp')[0];
-    const FORECAST = document.getElementsByClassName('component__forecast-box')[0];
-
-    
-}
-
 document.addEventListener("change", (event) => {
 
-    const weatherContainer = document.querySelector(".parkWeather")
     const parkContainer = document.querySelector(".chosenPark");
     const parks = getParks();
 
@@ -51,7 +42,6 @@ document.addEventListener("change", (event) => {
                     const long = park.longitude
 
                     fetchWeather(lat, long)
-                    .then(() => )
                 }
             }
         )
@@ -78,7 +68,7 @@ mainContainer.addEventListener("click", (clickEvent) => {
         );
 
         const parkObj = parks.find(
-            (park) => park.parkCode === selectedPark.value
+            (park) => park.id === selectedPark.value
         );
 
         let alertText = `${parkObj.fullName}

@@ -24,10 +24,28 @@ export const fetchWeather = (lat, lon) => {
     const weatherAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherKey}`;
     return fetch(weatherAPI)
         .then((response) => response.json())
-        .then((weathers) => {
-            applicationState.weather = weathers;    
-        });
-};
+        .then(weatherData => {
+            const forecast = weatherData
+                const cityName = `<ul class="weather">${forecast.city.name}</ul>`
+                let html = ``
+            
+            for (let i = 4; i < 40; i += 8) {
+                let date = new Date(forecast.list[i].dt * 1000).toLocaleDateString('en-US')
+                let tempMax = forecast.list[i].main.temp_max
+                let tempMin = forecast.list[i].main.temp_min
+                let farenheitMax = ((tempMax - 273.15) *1.8) + 32
+                let farenheitMin = ((tempMin - 273.15) *1.8) + 32
+                let conditions = forecast.list[i].weather[0].description
+                html += `<div class="weatherItem>\n\n${date}- High: ${Math.round(farenheitMax)}, Low: ${Math.round(farenheitMin)}, ${conditions}\n</div>\n` 
+            }
+
+                html += `</ul>`
+            
+            console.log(html)
+            const weatherContainer = document.querySelector(".showWeather")
+            weatherContainer.innerHTML = html
+
+})};
 
 export const getWeather = () => {
     return applicationState.weather.map((w) => ({ ...w }));
@@ -75,14 +93,14 @@ export const sendItineraries = (info) => {
         });
 };
 
-export const fetchItineraries = () =>{
+export const fetchItineraries = () => {
     return fetch(`${API}/itineraries`)
-    .then((response) => response.json())
-    .then((itinerary) => {
-        applicationState.itineraries = itinerary;
-    });
+        .then((response) => response.json())
+        .then((itinerary) => {
+            applicationState.itineraries = itinerary;
+        });
 };
 
-export const getItineraries = () =>{
+export const getItineraries = () => {
     return applicationState.itineraries.map((i) => ({ ...i }))
 }

@@ -53,6 +53,7 @@
     flex-grow: 1;
     text-align: center;
     background-color: #3f3c54;
+    
 }
 
 .savedOptions {
@@ -113,3 +114,14 @@
 
 .saveButton:hover[disabled] {opacity: 60%;}
 
+
+.weatherDisplay {
+
+}
+
+.showWeather {
+    display: flex;
+    flex-direction: column;
+    
+
+}

@@ -1,5 +1,5 @@
 import { BizarresDropdown } from "./bizarres/BizarresProvider.js";
-import { ParkProvider, Weather } from "./parks/ParkProvider.js";
+import { ParkProvider } from "./parks/ParkProvider.js";
 import { eateryDropdown } from "./eateries/EateryProvider.js";
 import { sendItineraries } from "./data/DataAccess.js";
 import { itineraryList } from "./Itinerary.js";
@@ -34,7 +34,7 @@ export const HolidayRoad = () => {
 
             <div class="weatherDisplay">
                 <h3>Weather</h3>
-                ${Weather()}
+                <div class="showWeather"></div>       
             </div>
         </div>
 
@@ -57,29 +57,9 @@ export const DetailsButton = (resource) => {
     `
 }
 
-// NOTE: "ameneties" property is spelled wrong in the API
-// export const DisplayAmenities = (attractionObj) => {
-//     /*
-//         loop through all of the ameneties on the object
-//         and get a list of the ones that are available (i.e "key": true)
-//     */
-//     const availableAmenities = [];
-//     for (const key of Object.keys(attractionObj.ameneties)) {
-//         if (attractionObj.ameneties[key]) {
-//             availableAmenities.push(key);
-//         }
-//     }
-//     /*
-//         blank array is actually a truthy value
-//         however, if length = 0 would be falsy
-//     */
-//     if (availableAmenities.length) {
-//         return `
-// Amenities:
-//     ${availableAmenities.join("\n")}
-// `;
-//     }
-// };
+// export const Weather = (weatherString) => {
+//     return weatherString
+// }
 
 const mainContainer = document.querySelector('#container')
 
