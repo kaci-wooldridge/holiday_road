@@ -1,5 +1,5 @@
 import { getBizarres } from "../data/DataAccess.js";
-import { DetailsButton } from "../HolidayRoad.js";
+import { DetailsButton, displayAmenities } from "../HolidayRoad.js";
 
 export const BizarresDropdown = () => {
     const bizarres = getBizarres();
@@ -65,10 +65,10 @@ ${bizarreObj.city}, ${bizarreObj.state}
 ${bizarreObj.description}
         `;
 
-        // const amenitiesText = DisplayAmenities(bizarreObj);
-        // if (amenitiesText) {
-        //     alertText += amenitiesText;
-        // }
+        const amenitiesText = displayAmenities(bizarreObj);
+        if (amenitiesText) {
+            alertText += amenitiesText;
+        }
 
         window.alert(alertText);
     }
