@@ -6,6 +6,7 @@
     display: flex;
     flex-flow: column wrap;
     color: #f9ffd5;
+    font-family: 'Bodoni Std', sans-serif;
 }
 
 .header {
@@ -18,7 +19,7 @@
 
 .headerText{
     color: #f9ffd5;
-    font-size: 50px;
+    font-size: 60px;
     padding-left: 20px;
     text-shadow: 2px 2px 5px #3e470ad2;
 
@@ -33,12 +34,15 @@
 }
 
 .dropdown select{
-    width: 200px;
+    width: 220px;
     height: 40px;
     text-align: center;
+    font-size: 17px;
     margin: 25px;
     background-color: #546c75;
     color: #f9ffd5;
+    font-family: 'Bodoni Std', sans-serif;
+    border-radius:4px;
 }
 
 .mainContent{
@@ -53,6 +57,7 @@
     flex-grow: 1;
     text-align: center;
     background-color: #3f3c54;
+    border-right: solid 1px black;
 }
 
 .savedOptions {
@@ -63,6 +68,7 @@
 
 .optionsDisplay {
     height: 300px;
+    
 }
 
 .itinerary {
