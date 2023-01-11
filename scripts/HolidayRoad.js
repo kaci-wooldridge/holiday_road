@@ -5,7 +5,7 @@ import { sendItineraries } from "./data/DataAccess.js";
 import { itineraryList } from "./Itinerary.js";
 
 export const HolidayRoad = () => {
-	return `
+    return `
     <div class="header">
         <h1 class="headerText">Holiday Road</h1>
         <div class="dropdownBoxes">
@@ -44,16 +44,16 @@ export const HolidayRoad = () => {
 };
 
 export const DetailsButton = (resource) => {
-	/*
+    /*
         Returns a "details" button for a given resource
 
             params:
                 resource (string): ex. "eateries", "parks", or "bizarres"
     */
-	return `
+    return `
         <button class="details__button" id="${resource}__details__button">Details</button>
-    `
-}
+    `;
+};
 
 // NOTE: "ameneties" property is spelled wrong in the API
 // export const DisplayAmenities = (attractionObj) => {
@@ -78,56 +78,50 @@ export const DetailsButton = (resource) => {
 // `;
 //     }
 // };
+const mainContainer = document.querySelector("#container");
 
-const mainContainer = document.querySelector('#container')
+// this is a really good opportunity to impletement applicationState
+// should not have to run formItineraryObj twice
+const formItineraryObj = () => {
+    const selectedPark = document.querySelector(
+        "#parks__dropdown option:checked"
+    ).value;
+    const selectedBizarre = document.querySelector(
+        "#bizarres__dropdown option:checked"
+    ).value;
+    const selectedEatery = document.querySelector(
+        "#eatery__dropdown option:checked"
+    ).value;
 
-mainContainer.addEventListener('change', (clickEvent) => {
-	const selectedPark = document.querySelector(
-		'#parks__dropdown option:checked'
-	).value
-	const selectedBizarre = document.querySelector(
-		'#bizarres__dropdown option:checked'
-	).value
-	const selectedEatery = document.querySelector(
-		'#eatery__dropdown option:checked'
-	).value
-
-    const saveButton = document.querySelector(".saveButton");
     if (selectedPark && selectedBizarre && selectedEatery) {
-        saveButton.disabled = false;
-    } else {
-        saveButton.disabled = true;
-    }
-
-    // hide/show the details buttons if a selection is not made for that attraction
-    const parkDetailsButton = mainContainer.querySelector(".chosenPark");
-    const bizarreDetailsButton = mainContainer.querySelector(".chosenBizarre");
-    const eateryDetailsButton = mainContainer.querySelector(".chosenEatery");
-
-    if (!selectedPark) {
-        parkDetailsButton.hidden = true;
-    } else {
-        parkDetailsButton.hidden = false;
-    }
-
-    if (!selectedBizarre) {
-        bizarreDetailsButton.hidden = true;
-    } else {
-        bizarreDetailsButton.hidden = false;
-    }
-
-    if (!selectedEatery) {
-        eateryDetailsButton.hidden = true;
-    } else {
-        eateryDetailsButton.hidden = false;
-    }
-
-    if (clickEvent.target.className === "saveButton") {
-        const tripObj = {
+        const itineraryObj = {
             parkCode: selectedPark,
             bizarreId: parseInt(selectedBizarre),
             eateryId: parseInt(selectedEatery),
         };
-        sendItineraries(tripObj);
+        return itineraryObj;
+    } else {
+        return null;
+    }
+};
+
+// see if all selections are made
+// if so, enable the save button
+mainContainer.addEventListener("change", () => {
+    const itineraryObj = formItineraryObj();
+
+    const saveButton = document.querySelector(".saveButton");
+    if (itineraryObj) {
+        saveButton.disabled = false;
+    } else {
+        saveButton.disabled = true;
+    }
+});
+
+// save button -> API
+mainContainer.addEventListener("click", (clickEvent) => {
+    if (clickEvent.target.className === "saveButton") {
+        const itineraryObj = formItineraryObj();
+        sendItineraries(itineraryObj);
     }
 });

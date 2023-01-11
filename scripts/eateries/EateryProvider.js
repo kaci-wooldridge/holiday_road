@@ -35,6 +35,14 @@ mainContainer.addEventListener("change", (changeEvent) => {
                 })
                 .join("") + DetailsButton("eatery");
     }
+
+    const eateryDetailsButton = mainContainer.querySelector(".chosenEatery");
+
+    if (!selectedEatery) {
+        eateryDetailsButton.hidden = true;
+    } else {
+        eateryDetailsButton.hidden = false;
+    }
 });
 
 mainContainer.addEventListener("click", (clickEvent) => {
