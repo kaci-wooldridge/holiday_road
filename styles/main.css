@@ -15,7 +15,7 @@
     padding: 4px;
     display: flex;
     justify-content: space-around;
-    background-color: #f9ffd5;
+    background-color: #524e6d;
     position: fixed;
     top: 0;
     width: 100%;
@@ -28,8 +28,8 @@ li {
 a {
 display: block;
 width: 100%;
-background-color: #f9ffd5;
-color: #3f3c54;
+background-color: #524e6d;
+color: #f9ffd5;
 
 }
 
@@ -45,8 +45,7 @@ color: #3f3c54;
     color: #f9ffd5;
     font-size: 60px;
     padding-left: 20px;
-    text-shadow: 2px 2px 5px #3e470ad2;
-
+    text-shadow: 5px 5px 5px #242803c7;
 }
 
 .dropdownBoxes{
@@ -63,10 +62,12 @@ color: #3f3c54;
     text-align: center;
     font-size: 17px;
     margin: 25px;
-    background-color: #546c75;
+    background-color: #517f90;
     color: #f9ffd5;
     font-family: 'Bodoni Std', sans-serif;
-    border-radius:4px;
+    border-radius:5px;
+    border-color: #242803c7;
+    box-shadow: 2px 2px 1px #242803c7
 }
 
 .mainContent{
@@ -80,14 +81,14 @@ color: #3f3c54;
 .chosenOptions {
     flex-grow: 1;
     text-align: center;
-    background-color: #3f3c54;
+    background-color: #524e6d;
     border-right: solid 1px black;
 }
 
 .savedOptions {
     width: 300px;
     text-align: center;
-    background-color: #48520cd2;
+    background-color: #54610cf0;
 }
 
 .optionsDisplay {
@@ -100,9 +101,9 @@ color: #3f3c54;
 }
 
 .details__button {
-    background-color: #8ac1d7;
-    border-radius: 50%;
-    color: white;
+    background-color: #f9ffd5;
+    border-radius: 5px;
+    color: #546c75;
     text-align: center;
     margin: 8px 8px;
     padding: 5px;
@@ -117,8 +118,8 @@ color: #3f3c54;
 .details__button:hover {opacity: 1}
 
 .saveButton {
-    background-color: #54610e;
-    border-radius: 50%;
+    background-color: #98b00f;
+    border-radius: 5px;
     color: white;
     text-align: center;
     margin: 8px 8px;
@@ -143,3 +144,39 @@ color: #3f3c54;
 
 .saveButton:hover[disabled] {opacity: 60%;}
 
+.delete__button {
+    background-color: rgb(113, 48, 48);
+    border-radius: 5px;
+    color: #f9ffd5;
+    text-align: center;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 11px;
+    padding: 5px;
+}
+
+.delete__button:hover {
+    opacity:2;
+}
+
+.itinerary-directions__button {
+    background-color: #f9ffd5;
+    border-radius: 5px;
+    color: #524e6d;
+    text-align: center;
+    margin: 8px 8px;
+    padding: 5px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.itinerary-directions__button:hover {
+    opacity:2;
+}
