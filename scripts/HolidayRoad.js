@@ -55,32 +55,40 @@ export const DetailsButton = (resource) => {
     `;
 };
 
-// NOTE: "ameneties" property is spelled wrong in the API
-// export const DisplayAmenities = (attractionObj) => {
-//     /*
-//         loop through all of the ameneties on the object
-//         and get a list of the ones that are available (i.e "key": true)
-//     */
-//     const availableAmenities = [];
-//     for (const key of Object.keys(attractionObj.ameneties)) {
-//         if (attractionObj.ameneties[key]) {
-//             availableAmenities.push(key);
-//         }
-//     }
-//     /*
-//         blank array is actually a truthy value
-//         however, if length = 0 would be falsy
-//     */
-//     if (availableAmenities.length) {
-//         return `
-// Amenities:
-//     ${availableAmenities.join("\n")}
-// `;
-//     }
-// };
+const toSentenceCase = (camelCase) => {
+    /*
+        Usage example:
+            console.log( toSentenceCase(‘mySampleText’) ); // My sample text
+            console.log( toSentenceCase(‘anotherText’)  ); // Another text
+    */
+    if (camelCase) {
+        const result = camelCase.replace(/([A-Z])/g, " $1");
+        return result[0].toUpperCase() + result.substring(1).toLowerCase();
+    }
+    return "";
+};
+
+export const displayAmenities = (attractionObj) => {
+    // loop through all the amenities on the object, and only show ones with the value true
+    const availableAmenities = [];
+    for (const key of Object.keys(attractionObj.ameneties)) {
+        // check for eval to true
+        // NOTE: "ameneties" property is spelled wrong in the API
+        if (attractionObj.ameneties[key]) {
+            availableAmenities.push(toSentenceCase(key));
+        }
+    }
+    // empty object will still eval to true, but length = 0 will be falsy
+    if (availableAmenities.length) {
+        return `
+Amenities:
+- ${availableAmenities.join("\n- ")}`;
+    }
+};
+
 const mainContainer = document.querySelector("#container");
 
-// this is a really good opportunity to impletement applicationState
+// this is a really good opportunity to implement applicationState
 // should not have to run formItineraryObj twice
 const formItineraryObj = () => {
     const selectedPark = document.querySelector(
