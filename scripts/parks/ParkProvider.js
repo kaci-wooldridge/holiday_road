@@ -114,9 +114,11 @@ ${parkObj.description}
 
 mainContainer.addEventListener("click", (clickEvent) => {
     const parkContainer = document.querySelector(".chosenPark");
+    const weatherContainer = document.querySelector(".showWeather");
     if (clickEvent.target.id === "park__delete__button") {
         parkContainer.innerHTML = "";
         resetDropdown()
+        weatherContainer.innerHTML = "";
     }
 });
 
