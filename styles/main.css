@@ -20,6 +20,7 @@
     top: 0;
     width: 100%;
     font-size: 17px;
+    border-bottom: 2px solid #f9ffd5;
 }
 
 li {

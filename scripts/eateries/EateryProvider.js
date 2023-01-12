@@ -83,5 +83,12 @@ mainContainer.addEventListener("click", (clickEvent) => {
     const eateryContainer = document.querySelector(".chosenEatery");
     if (clickEvent.target.id === "eatery__delete__button") {
         eateryContainer.innerHTML = "";
+        resetDropdown()
     }
+    
 });
+
+
+const resetDropdown = () =>{
+    document.getElementById('eatery__dropdown').value = ""
+}
