@@ -1,4 +1,4 @@
-const applicationState = {};
+export const applicationState = {};
 //export const transientItineraryObj = {}
 const mainContainer = document.querySelector("#container");
 import APIKeys from "../Settings.js";
@@ -24,23 +24,32 @@ export const fetchWeather = (lat, lon) => {
     const weatherAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherKey}`;
     return fetch(weatherAPI)
         .then((response) => response.json())
-        .then((weather) => {
-            applicationState.weathers = weather;
-        });
-};
+        .then(weatherData => {
+            const forecast = weatherData
+                //const cityName = `<ul class="weather">${forecast.city.name}</ul>`
+                let html = `<h2 class="weatherCity">5 Day Forecast for ${forecast.city.name}</h2>
+                <ul class="weather">`
+                
+            
+            for (let i = 4; i < 40; i += 8) {
+                let date = new Date(forecast.list[i].dt * 1000).toLocaleDateString('en-US')
+                let tempMax = forecast.list[i].main.temp_max
+                let tempMin = forecast.list[i].main.temp_min
+                let farenheitMax = ((tempMax - 273.15) *1.8) + 32
+                let farenheitMin = ((tempMin - 273.15) *1.8) + 32
+                let conditions = forecast.list[i].weather[0].description
+                html += `<div class="weatherItem">\n\n${date}- High: ${Math.round(farenheitMax)}, Low: ${Math.round(farenheitMin)}, ${conditions}\n</div>\n` 
+            }
 
-// const weatherKey = APIKeys.weatherKey
-// export const weatherAPI = `https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=${weatherKey}`
-// export const fetchWeather = () => {
-// 	return fetch(weatherAPI)
-// 		.then((response) => response.json())
-// 		.then((weather) => {
-// 			applicationState.weathers = weather
-// 		})
-// }
+                html += `</ul>`
+            
+            const weatherContainer = document.querySelector(".showWeather")
+            weatherContainer.innerHTML = html
+
+})};
 
 export const getWeather = () => {
-    return applicationState.weathers.map((w) => ({ ...w }));
+    return applicationState.weather.map((w) => ({ ...w }));
 };
 
 const bizarresAPI = `http://holidayroad.nss.team/bizarreries`;
@@ -85,14 +94,14 @@ export const sendItineraries = (info) => {
         });
 };
 
-export const fetchItineraries = () =>{
+export const fetchItineraries = () => {
     return fetch(`${API}/itineraries`)
-    .then((response) => response.json())
-    .then((itinerary) => {
-        applicationState.itineraries = itinerary;
-    });
+        .then((response) => response.json())
+        .then((itinerary) => {
+            applicationState.itineraries = itinerary;
+        });
 };
 
-export const getItineraries = () =>{
+export const getItineraries = () => {
     return applicationState.itineraries.map((i) => ({ ...i }))
 }

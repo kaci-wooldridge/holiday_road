@@ -1,4 +1,5 @@
-import { getParks } from "../data/DataAccess.js";
+import { getParks, fetchWeather, getWeather, applicationState } from "../data/DataAccess.js";
+
 import { DetailsButton, deleteButton } from "../HolidayRoad.js";
 
 export const ParkProvider = () => {
@@ -8,48 +9,60 @@ export const ParkProvider = () => {
             <select class="dropdown" id="parks__dropdown">
                 <option value="">Select a Park</option>
                 ${parks.map((park) => {
-                    return `<option value="${park.parkCode}">${park.fullName}</option>`;
-                })}
+        return `<option value="${park.id}">${park.fullName}</option>`;
+    })}
             </select>
         </div>
     `;
 };
 
-// const pushParkObjToTransientItineraryObj = (parkKode) => {
-//     transientItineraryObj.parkId = parkKode
+document.addEventListener("change", (event) => {
 
-//     const parks = getParks()
+    const parkContainer = document.querySelector(".chosenPark");
+    const parks = getParks();
 
-//     parks.map(
-//         (park) => {
-//             if (parkKode === park.parkCode) {
-//                 transientItineraryObj.lat = park.latitude,
-//                 transientItineraryObj.lon = park.longitude
-//             }
-//         }
-//     )
+    const clicked = event.target;
 
-//     const lattitude = transientItineraryObj.lat
-//     const longitude = transientItineraryObj.lon
+    if (clicked.id === "parks__dropdown") {
+        const parkId = clicked.value;
 
-//     fetchWeather(lattitude, longitude)
-// }
+        parkContainer.innerHTML = parks
+            .map((park) => {
+                if (parkId === park.id) {
+                    return park.fullName;
+                }
+            })
+            .join("");
 
-// export const DisplayPark = () => {
-//     const parks = getParks()
-//     return parks.map(
-//         (park) => {
-//             if (park.parkCode === transientItineraryObj.parkId) {
-//                 return `${park.fullName}`
-//             }
-//         }
-//     ).join("")
-// }
+        parks.map(
+            (park) => {
+                if (parkId === park.id) {
 
-export const DisplayWeather = () => {};
+                    const lat = park.latitude
+                    const long = park.longitude
 
-document.addEventListener("change", () => {
-    // checking to see if the dropdown has a value, i.e. not the default ""
+                    fetchWeather(lat, long)
+                }
+            }
+        )
+        parkContainer.innerHTML = parks
+            .map((park) => {
+                if (parkId === park.id) {
+                    return park.fullName;
+                }
+            })
+            .join("");
+    }
+
+    // only add a details button for the park if there ISN'T one
+    const parkDetailsButton = mainContainer.querySelector(
+        "#park__details__button"
+    );
+
+    if (parkContainer.innerHTML && !parkDetailsButton) {
+        parkContainer.innerHTML += DetailsButton("park") + deleteButton("park");
+    }
+
     const selectedPark = document.querySelector(
         "#parks__dropdown option:checked"
     );
@@ -86,7 +99,7 @@ mainContainer.addEventListener("click", (clickEvent) => {
         );
 
         const parkObj = parks.find(
-            (park) => park.parkCode === selectedPark.value
+            (park) => park.id === selectedPark.value
         );
 
         let alertText = `${parkObj.fullName}
