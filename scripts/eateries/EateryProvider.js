@@ -1,5 +1,9 @@
 import { getEateries } from "../data/DataAccess.js";
-import { deleteButton, DetailsButton, displayAmenities } from "../HolidayRoad.js";
+import {
+    deleteButton,
+    DetailsButton,
+    displayAmenities,
+} from "../HolidayRoad.js";
 
 const mainContainer = document.querySelector("#container");
 
@@ -19,34 +23,27 @@ export const eateryDropdown = () => {
     `;
 };
 
-mainContainer.addEventListener("change", (changeEvent) => {
-    const eateryContainer = document.querySelector(".chosenEatery");
-    const eateries = getEateries();
-    let chosenEatery = "";
-    if (changeEvent.target.id === "eatery__dropdown") {
-        chosenEatery = parseInt(changeEvent.target.value);
-
-        eateryContainer.innerHTML = eateries
-            .map((eatery) => {
-                if (chosenEatery === eatery.id) {
-                    return eatery.businessName;
-                }
-            })
-            .join("");
-    }
-
-    const eateryDetailsButton = mainContainer.querySelector(
-        "#eatery__details__button"
-    );
-
-    if (eateryContainer.innerHTML && !eateryDetailsButton) {
-        eateryContainer.innerHTML += DetailsButton("eatery") + deleteButton("eatery");
-    }
-
+mainContainer.addEventListener("change", () => {
+    // checking to see if the dropdown has a value, i.e. not the default ""
     const selectedEatery = document.querySelector(
         "#eatery__dropdown option:checked"
     );
+    // this is the element that shows up in the itinerary
+    const itineraryEatery = document.querySelector(".chosenEatery");
 
+    // default value is blank string, check for truthy value
+    if (selectedEatery.value) {
+        itineraryEatery.innerHTML =
+            selectedEatery.text +
+            DetailsButton("eatery") +
+            deleteButton("eatery");
+    } else {
+        // this is what the itinerary eatery should show on reset to "Select an Eatery"
+        itineraryEatery.innerHTML = "";
+    }
+
+    // hide/show the details button if a selection is made
+    const eateryDetailsButton = mainContainer.querySelector(".chosenEatery");
     if (!selectedEatery) {
         eateryDetailsButton.hidden = true;
     } else {
@@ -82,9 +79,9 @@ ${eateryObj.description}
     }
 });
 
-mainContainer.addEventListener("click", (clickEvent) =>{
-    const eateryContainer = document.querySelector(".chosenEatery")
-    if (clickEvent.target.id === "eatery__delete__button"){
-        eateryContainer.innerHTML = ""
+mainContainer.addEventListener("click", (clickEvent) => {
+    const eateryContainer = document.querySelector(".chosenEatery");
+    if (clickEvent.target.id === "eatery__delete__button") {
+        eateryContainer.innerHTML = "";
     }
-})
+});
