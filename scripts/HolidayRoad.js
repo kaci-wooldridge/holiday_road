@@ -30,6 +30,7 @@ export const HolidayRoad = () => {
             <div class="optionsDisplay">
                 <h1>Your Itinerary</h1>
                 <div class="chosenPark"></div>
+                <div class="parkWeather"></div>
                 <div class="chosenBizarre"></div>
                 <div class="chosenEatery"></div>
             </div>
@@ -41,7 +42,7 @@ export const HolidayRoad = () => {
             </div>
 
             <div class="weatherDisplay">
-                <h2>Weather</h2>
+                <div class="showWeather"></div>
             </div>
         </div>
 

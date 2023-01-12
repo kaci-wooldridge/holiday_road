@@ -84,5 +84,10 @@ mainContainer.addEventListener("click", (clickEvent) => {
     const itineraryBizarre = document.querySelector(".chosenBizarre");
     if (clickEvent.target.id === "bizarre__delete__button") {
         itineraryBizarre.innerHTML = "";
+        resetDropdown()
     }
 });
+
+const resetDropdown = () =>{
+    document.getElementById('bizarres__dropdown').value = ""
+}
