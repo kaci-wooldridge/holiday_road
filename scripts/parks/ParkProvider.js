@@ -116,5 +116,10 @@ mainContainer.addEventListener("click", (clickEvent) => {
     const parkContainer = document.querySelector(".chosenPark");
     if (clickEvent.target.id === "park__delete__button") {
         parkContainer.innerHTML = "";
+        resetDropdown()
     }
 });
+
+const resetDropdown = () =>{
+    document.getElementById('parks__dropdown').value = ""
+}
