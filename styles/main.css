@@ -19,6 +19,7 @@
     position: fixed;
     top: 0;
     width: 100%;
+    font-size: 17px;
 }
 
 li {
@@ -30,7 +31,6 @@ display: block;
 width: 100%;
 background-color: #524e6d;
 color: #f9ffd5;
-
 }
 
 .header {
@@ -57,8 +57,8 @@ color: #f9ffd5;
 }
 
 .dropdown select{
-    width: 220px;
-    height: 40px;
+    width: 250px;
+    height: 45px;
     text-align: center;
     font-size: 17px;
     margin: 25px;
@@ -89,15 +89,25 @@ color: #f9ffd5;
     width: 300px;
     text-align: center;
     background-color: #54610cf0;
+    
 }
 
 .optionsDisplay {
     height: 300px;
-    
+    font-size: 20px;
+
 }
 
 .itinerary {
     text-align: left;
+}
+
+.savedItineraryList {
+    font-size: 20px;
+}
+
+.savedContainer {
+    margin-top: 30px;
 }
 
 .details__button {
@@ -107,12 +117,13 @@ color: #f9ffd5;
     text-align: center;
     margin: 8px 8px;
     padding: 5px;
-    opacity: 0.6;
+    opacity: 0.65;
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 15px;
+    font-family: 'Bodoni Std', sans-serif;
 }
 
 .details__button:hover {opacity: 1}
@@ -124,12 +135,13 @@ color: #f9ffd5;
     text-align: center;
     margin: 8px 8px;
     padding: 6px;
-    opacity: 0.6;
+    opacity: 0.65;
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 17px;
+    font-family: 'Bodoni Std', sans-serif;
 }
 
 .saveButton:hover {opacity: 2}
@@ -149,13 +161,14 @@ color: #f9ffd5;
     border-radius: 5px;
     color: #f9ffd5;
     text-align: center;
-    opacity: 0.6;
+    opacity: 0.65;
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 15px;
     padding: 5px;
+    font-family: 'Bodoni Std', sans-serif;
 }
 
 .delete__button:hover {
@@ -169,12 +182,13 @@ color: #f9ffd5;
     text-align: center;
     margin: 8px 8px;
     padding: 5px;
-    opacity: 0.6;
+    opacity: 0.65;
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 15px;
+    font-family: 'Bodoni Std', sans-serif;
 }
 
 .itinerary-directions__button:hover {
