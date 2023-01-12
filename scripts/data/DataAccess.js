@@ -1,7 +1,7 @@
-const applicationState = {};
-//export const transientItineraryObj = {}
-const mainContainer = document.querySelector("#container");
 import APIKeys from "../Settings.js";
+
+const applicationState = {};
+const mainContainer = document.querySelector("#container");
 
 const API = "http://localhost:8088";
 
@@ -85,14 +85,14 @@ export const sendItineraries = (info) => {
         });
 };
 
-export const fetchItineraries = () =>{
+export const fetchItineraries = () => {
     return fetch(`${API}/itineraries`)
-    .then((response) => response.json())
-    .then((itinerary) => {
-        applicationState.itineraries = itinerary;
-    });
+        .then((response) => response.json())
+        .then((itinerary) => {
+            applicationState.itineraries = itinerary;
+        });
 };
 
-export const getItineraries = () =>{
-    return applicationState.itineraries.map((i) => ({ ...i }))
-}
+export const getItineraries = () => {
+    return applicationState.itineraries.map((i) => ({ ...i }));
+};

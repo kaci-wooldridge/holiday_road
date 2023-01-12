@@ -52,7 +52,13 @@ export const HolidayRoad = () => {
     </div>`;
 };
 
-export const DetailsButton = (resource) => {
+export const deleteButton = (resource) => {
+    return `
+        <button class="delete__button" id="${resource}__delete__button">x</button>
+    `;
+};
+
+export const detailsButton = (resource) => {
     /*
         Returns a "details" button for a given resource
 
@@ -142,9 +148,3 @@ mainContainer.addEventListener("click", (clickEvent) => {
         sendItineraries(itineraryObj);
     }
 });
-
-export const deleteButton = (resource) => {
-    return `
-        <button class="delete__button" id="${resource}__delete__button">x</button>
-    `;
-};
