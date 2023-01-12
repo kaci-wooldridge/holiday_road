@@ -5,9 +5,18 @@ import { sendItineraries } from "./data/DataAccess.js";
 import { itineraryList } from "./Itinerary.js";
 
 export const HolidayRoad = () => {
-	return `
+    return `
+    <div class = "navBar">
+        <ul class="navElements">
+        <li><a href="default.asp">Home</a></li>
+        <li><a href="news.asp">News</a></li>
+        <li><a href="contact.asp">Contact</a></li>
+        <li><a href="about.asp">About</a></li>
+        </ul>
+    </div>  
+
     <div class="header">
-        <h2 class="headerText">Holiday Road</h2>
+        <h1 class="headerText">Holiday Road</h1>
         <div class="dropdownBoxes">
             ${ParkProvider()}
             ${BizarresDropdown()}
@@ -19,7 +28,7 @@ export const HolidayRoad = () => {
         <div class="chosenOptions">
 
             <div class="optionsDisplay">
-                <h3>Your Itinerary</h3>
+                <h1>Your Itinerary</h1>
                 <div class="chosenPark"></div>
                 <div class="parkWeather"></div>
                 <div class="chosenBizarre"></div>
@@ -33,83 +42,110 @@ export const HolidayRoad = () => {
             </div>
 
             <div class="weatherDisplay">
-                <h3>Weather</h3>
-                <div class="showWeather"></div>       
+                <h2>Weather</h2>
             </div>
         </div>
 
         <div class="savedOptions">
-            <h3>Saved Itinerary List</h3>
+            <h1>Saved Itinerary List</h1>
             <div class="savedItineraryList">${itineraryList()}</div>
         </div>
     </div>`;
 };
 
 export const DetailsButton = (resource) => {
-	/*
+    /*
         Returns a "details" button for a given resource
 
             params:
                 resource (string): ex. "eateries", "parks", or "bizarres"
     */
-	return `
+    return `
         <button class="details__button" id="${resource}__details__button">Details</button>
-    `
-}
+    `;
+};
 
-// export const Weather = (weatherString) => {
-//     return weatherString
-// }
+const toSentenceCase = (camelCase) => {
+    /*
+        Usage example:
+            console.log( toSentenceCase(‘mySampleText’) ); // My sample text
+            console.log( toSentenceCase(‘anotherText’)  ); // Another text
+    */
+    if (camelCase) {
+        const result = camelCase.replace(/([A-Z])/g, " $1");
+        return result[0].toUpperCase() + result.substring(1).toLowerCase();
+    }
+    return "";
+};
 
-const mainContainer = document.querySelector('#container')
+export const displayAmenities = (attractionObj) => {
+    // loop through all the amenities on the object, and only show ones with the value true
+    const availableAmenities = [];
+    for (const key of Object.keys(attractionObj.ameneties)) {
+        // check for eval to true
+        // NOTE: "ameneties" property is spelled wrong in the API
+        if (attractionObj.ameneties[key]) {
+            availableAmenities.push(toSentenceCase(key));
+        }
+    }
+    // empty object will still eval to true, but length = 0 will be falsy
+    if (availableAmenities.length) {
+        return `
+Amenities:
+- ${availableAmenities.join("\n- ")}`;
+    }
+};
 
-mainContainer.addEventListener('change', (clickEvent) => {
-	const selectedPark = document.querySelector(
-		'#parks__dropdown option:checked'
-	).value
-	const selectedBizarre = document.querySelector(
-		'#bizarres__dropdown option:checked'
-	).value
-	const selectedEatery = document.querySelector(
-		'#eatery__dropdown option:checked'
-	).value
+const mainContainer = document.querySelector("#container");
 
-    const saveButton = document.querySelector(".saveButton");
+// this is a really good opportunity to implement applicationState
+// should not have to run formItineraryObj twice
+const formItineraryObj = () => {
+    const selectedPark = document.querySelector(
+        "#parks__dropdown option:checked"
+    ).value;
+    const selectedBizarre = document.querySelector(
+        "#bizarres__dropdown option:checked"
+    ).value;
+    const selectedEatery = document.querySelector(
+        "#eatery__dropdown option:checked"
+    ).value;
+
     if (selectedPark && selectedBizarre && selectedEatery) {
-        saveButton.disabled = false;
-    } else {
-        saveButton.disabled = true;
-    }
-
-    // hide/show the details buttons if a selection is not made for that attraction
-    const parkDetailsButton = mainContainer.querySelector(".chosenPark");
-    const bizarreDetailsButton = mainContainer.querySelector(".chosenBizarre");
-    const eateryDetailsButton = mainContainer.querySelector(".chosenEatery");
-
-    if (!selectedPark) {
-        parkDetailsButton.hidden = true;
-    } else {
-        parkDetailsButton.hidden = false;
-    }
-
-    if (!selectedBizarre) {
-        bizarreDetailsButton.hidden = true;
-    } else {
-        bizarreDetailsButton.hidden = false;
-    }
-
-    if (!selectedEatery) {
-        eateryDetailsButton.hidden = true;
-    } else {
-        eateryDetailsButton.hidden = false;
-    }
-
-    if (clickEvent.target.className === "saveButton") {
-        const tripObj = {
+        const itineraryObj = {
             parkCode: selectedPark,
             bizarreId: parseInt(selectedBizarre),
             eateryId: parseInt(selectedEatery),
         };
-        sendItineraries(tripObj);
+        return itineraryObj;
+    } else {
+        return null;
+    }
+};
+
+// see if all selections are made
+// if so, enable the save button
+mainContainer.addEventListener("change", () => {
+    const itineraryObj = formItineraryObj();
+
+    const saveButton = document.querySelector(".saveButton");
+    if (itineraryObj) {
+        saveButton.disabled = false;
+    } else {
+        saveButton.disabled = true;
     }
 });
+
+// save button -> API
+mainContainer.addEventListener("click", (clickEvent) => {
+    if (clickEvent.target.className === "saveButton") {
+        const itineraryObj = formItineraryObj();
+        sendItineraries(itineraryObj);
+    }
+});
+
+export const deleteButton = (resource) => {
+    return `
+        <button class="delete__button" id="${resource}__delete__button">x</button>
+    `;
+};

@@ -1,5 +1,5 @@
 import { getBizarres } from "../data/DataAccess.js";
-import { DetailsButton } from "../HolidayRoad.js";
+import { deleteButton, DetailsButton, displayAmenities } from "../HolidayRoad.js";
 
 export const BizarresDropdown = () => {
     const bizarres = getBizarres();
@@ -21,22 +21,28 @@ export const BizarresDropdown = () => {
 const mainContainer = document.querySelector("#container");
 
 mainContainer.addEventListener("change", (event) => {
-    if (event.target.id === "bizarres__dropdown") {
-        // checking to see if the dropdown has a value, i.e. not the default ""
-        const selectedBizarre = document.querySelector(
-            "#bizarres__dropdown option:checked"
-        );
-        // this is the element that shows up in the itinerary
-        const itineraryBizarre = document.querySelector(".chosenBizarre");
+    // checking to see if the dropdown has a value, i.e. not the default ""
+    const selectedBizarre = document.querySelector(
+        "#bizarres__dropdown option:checked"
+    );
+    // this is the element that shows up in the itinerary
+    const itineraryBizarre = document.querySelector(".chosenBizarre");
 
-        // default value is blank string, check for truthy value
-        if (selectedBizarre.value) {
-            itineraryBizarre.innerHTML =
-                selectedBizarre.text + DetailsButton("bizarre");
-        } else {
-            // this is what the itinerary bizarre should show on reset to "Select a Bizarre Destination"
-            itineraryBizarre.innerHTML = "";
-        }
+    // default value is blank string, check for truthy value
+    if (selectedBizarre.value) {
+        itineraryBizarre.innerHTML =
+            selectedBizarre.text + DetailsButton("bizarre") + deleteButton("bizarre");
+    } else {
+        // this is what the itinerary bizarre should show on reset to "Select a Bizarre Destination"
+        itineraryBizarre.innerHTML = "";
+    }
+
+    // hide/show the details button if a selection is made
+    const bizarreDetailsButton = mainContainer.querySelector(".chosenBizarre");
+    if (!selectedBizarre) {
+        bizarreDetailsButton.hidden = true;
+    } else {
+        bizarreDetailsButton.hidden = false;
     }
 });
 
@@ -59,11 +65,18 @@ ${bizarreObj.city}, ${bizarreObj.state}
 ${bizarreObj.description}
         `;
 
-        // const amenitiesText = DisplayAmenities(bizarreObj);
-        // if (amenitiesText) {
-        //     alertText += amenitiesText;
-        // }
+        const amenitiesText = displayAmenities(bizarreObj);
+        if (amenitiesText) {
+            alertText += amenitiesText;
+        }
 
         window.alert(alertText);
     }
 });
+
+mainContainer.addEventListener("click", (clickEvent) =>{
+    const itineraryBizarre = document.querySelector(".chosenBizarre")
+    if (clickEvent.target.id === "bizarre__delete__button"){
+        itineraryBizarre.innerHTML = ""
+    }
+})

@@ -1,6 +1,6 @@
 import { getParks, fetchWeather, getWeather, applicationState } from "../data/DataAccess.js";
 
-import { DetailsButton } from "../HolidayRoad.js";
+import { DetailsButton, deleteButton } from "../HolidayRoad.js";
 
 export const ParkProvider = () => {
     const parks = getParks();
@@ -45,14 +45,33 @@ document.addEventListener("change", (event) => {
                 }
             }
         )
-        parkContainer.innerHTML =
-            parks
-                .map((park) => {
-                    if (parkId === park.id) {
-                        return park.fullName;
-                    }
-                })
-                .join("") + DetailsButton("park");
+        parkContainer.innerHTML = parks
+            .map((park) => {
+                if (parkId === park.id) {
+                    return park.fullName;
+                }
+            })
+            .join("");
+    }
+
+    // only add a details button for the park if there ISN'T one
+    const parkDetailsButton = mainContainer.querySelector(
+        "#park__details__button"
+    );
+
+    if (parkContainer.innerHTML && !parkDetailsButton) {
+        parkContainer.innerHTML += DetailsButton("park") + deleteButton("park");
+    }
+
+    const selectedPark = document.querySelector(
+        "#parks__dropdown option:checked"
+    );
+
+    if (!selectedPark) {
+        parkDetailsButton.hidden = true;
+    } else {
+        // TODO FIXME throwing an error sometimes but why?
+        parkDetailsButton.hidden = false;
     }
 });
 
@@ -77,11 +96,13 @@ ${parkObj.latLong} (${parkObj.states})
 ${parkObj.description}
         `;
 
-        // const amenitiesText = DisplayAmenities(parkObj);
-        // if (amenitiesText) {
-        //     alertText += amenitiesText;
-        // }
-
         window.alert(alertText);
     }
 });
+
+mainContainer.addEventListener("click", (clickEvent) =>{
+    const parkContainer = document.querySelector(".chosenPark")
+    if (clickEvent.target.id === "park__delete__button"){
+        parkContainer.innerHTML = ""
+    }
+})

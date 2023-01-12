@@ -1,3 +1,58 @@
 {
-  "itineraries": []
+  "itineraries": [
+    {
+      "parkCode": "anch",
+      "bizarreId": 7,
+      "eateryId": 11,
+      "id": 1
+    },
+    {
+      "parkCode": "anch",
+      "bizarreId": 12,
+      "eateryId": 10,
+      "id": 2
+    },
+    {
+      "parkCode": "alag",
+      "bizarreId": 11,
+      "eateryId": 11,
+      "id": 3
+    },
+    {
+      "parkCode": "acad",
+      "bizarreId": 3,
+      "eateryId": 5,
+      "id": 4
+    },
+    {
+      "parkCode": "afam",
+      "bizarreId": 3,
+      "eateryId": 5,
+      "id": 5
+    },
+    {
+      "parkCode": "acad",
+      "bizarreId": 2,
+      "eateryId": 6,
+      "id": 6
+    },
+    {
+      "parkCode": "adam",
+      "bizarreId": 3,
+      "eateryId": 7,
+      "id": 7
+    },
+    {
+      "parkCode": "agfo",
+      "bizarreId": 8,
+      "eateryId": 11,
+      "id": 8
+    },
+    {
+      "parkCode": "alca",
+      "bizarreId": 11,
+      "eateryId": 15,
+      "id": 9
+    }
+  ]
 }
