@@ -26,8 +26,10 @@ export const fetchWeather = (lat, lon) => {
         .then((response) => response.json())
         .then(weatherData => {
             const forecast = weatherData
-                const cityName = `<ul class="weather">${forecast.city.name}</ul>`
-                let html = ``
+                //const cityName = `<ul class="weather">${forecast.city.name}</ul>`
+                let html = `<h2 class="weatherCity">5 Day Forecast for ${forecast.city.name}</h2>
+                <ul class="weather">`
+                
             
             for (let i = 4; i < 40; i += 8) {
                 let date = new Date(forecast.list[i].dt * 1000).toLocaleDateString('en-US')
@@ -36,12 +38,11 @@ export const fetchWeather = (lat, lon) => {
                 let farenheitMax = ((tempMax - 273.15) *1.8) + 32
                 let farenheitMin = ((tempMin - 273.15) *1.8) + 32
                 let conditions = forecast.list[i].weather[0].description
-                html += `<div class="weatherItem>\n\n${date}- High: ${Math.round(farenheitMax)}, Low: ${Math.round(farenheitMin)}, ${conditions}\n</div>\n` 
+                html += `<div class="weatherItem">\n\n${date}- High: ${Math.round(farenheitMax)}, Low: ${Math.round(farenheitMin)}, ${conditions}\n</div>\n` 
             }
 
                 html += `</ul>`
             
-            console.log(html)
             const weatherContainer = document.querySelector(".showWeather")
             weatherContainer.innerHTML = html
 

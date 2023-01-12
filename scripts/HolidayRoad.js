@@ -42,7 +42,6 @@ export const HolidayRoad = () => {
             </div>
 
             <div class="weatherDisplay">
-                <h2>Weather</h2>
                 <div class="showWeather"></div>
             </div>
         </div>
