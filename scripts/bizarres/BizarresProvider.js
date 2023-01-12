@@ -1,5 +1,9 @@
 import { getBizarres } from "../data/DataAccess.js";
-import { deleteButton, DetailsButton, displayAmenities } from "../HolidayRoad.js";
+import {
+    deleteButton,
+    DetailsButton,
+    displayAmenities,
+} from "../HolidayRoad.js";
 
 export const BizarresDropdown = () => {
     const bizarres = getBizarres();
@@ -20,7 +24,7 @@ export const BizarresDropdown = () => {
 
 const mainContainer = document.querySelector("#container");
 
-mainContainer.addEventListener("change", (event) => {
+mainContainer.addEventListener("change", () => {
     // checking to see if the dropdown has a value, i.e. not the default ""
     const selectedBizarre = document.querySelector(
         "#bizarres__dropdown option:checked"
@@ -31,7 +35,9 @@ mainContainer.addEventListener("change", (event) => {
     // default value is blank string, check for truthy value
     if (selectedBizarre.value) {
         itineraryBizarre.innerHTML =
-            selectedBizarre.text + DetailsButton("bizarre") + deleteButton("bizarre");
+            selectedBizarre.text +
+            DetailsButton("bizarre") +
+            deleteButton("bizarre");
     } else {
         // this is what the itinerary bizarre should show on reset to "Select a Bizarre Destination"
         itineraryBizarre.innerHTML = "";
@@ -74,9 +80,9 @@ ${bizarreObj.description}
     }
 });
 
-mainContainer.addEventListener("click", (clickEvent) =>{
-    const itineraryBizarre = document.querySelector(".chosenBizarre")
-    if (clickEvent.target.id === "bizarre__delete__button"){
-        itineraryBizarre.innerHTML = ""
+mainContainer.addEventListener("click", (clickEvent) => {
+    const itineraryBizarre = document.querySelector(".chosenBizarre");
+    if (clickEvent.target.id === "bizarre__delete__button") {
+        itineraryBizarre.innerHTML = "";
     }
-})
+});

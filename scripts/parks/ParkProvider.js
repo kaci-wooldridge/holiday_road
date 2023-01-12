@@ -66,12 +66,24 @@ document.addEventListener("change", (event) => {
     const selectedPark = document.querySelector(
         "#parks__dropdown option:checked"
     );
+    // this is the element that shows up in the itinerary
+    const itineraryPark = document.querySelector(".chosenPark");
 
-    if (!selectedPark) {
-        parkDetailsButton.hidden = true;
+    // default value is blank string, check for truthy value
+    if (selectedPark.value) {
+        itineraryPark.innerHTML =
+            selectedPark.text + DetailsButton("park") + deleteButton("park");
     } else {
-        // TODO FIXME throwing an error sometimes but why?
-        parkDetailsButton.hidden = false;
+        // this is what the itinerary park should show on reset to "Select a park"
+        itineraryPark.innerHTML = "";
+    }
+
+    // hide/show the details button if a selection is made
+    const bizarreDetailsButton = mainContainer.querySelector(".chosenPark");
+    if (!selectedPark) {
+        bizarreDetailsButton.hidden = true;
+    } else {
+        bizarreDetailsButton.hidden = false;
     }
 });
 
@@ -100,9 +112,9 @@ ${parkObj.description}
     }
 });
 
-mainContainer.addEventListener("click", (clickEvent) =>{
-    const parkContainer = document.querySelector(".chosenPark")
-    if (clickEvent.target.id === "park__delete__button"){
-        parkContainer.innerHTML = ""
+mainContainer.addEventListener("click", (clickEvent) => {
+    const parkContainer = document.querySelector(".chosenPark");
+    if (clickEvent.target.id === "park__delete__button") {
+        parkContainer.innerHTML = "";
     }
-})
+});
