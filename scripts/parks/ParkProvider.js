@@ -48,44 +48,29 @@ export const ParkProvider = () => {
 
 export const DisplayWeather = () => {};
 
-document.addEventListener("change", (event) => {
-    const parkContainer = document.querySelector(".chosenPark");
-    const parks = getParks();
-
-    const clicked = event.target;
-
-    if (clicked.id === "parks__dropdown") {
-        const parkKode = clicked.value;
-
-        //pushParkObjToTransientItineraryObj(parkKode)
-
-        parkContainer.innerHTML = parks
-            .map((park) => {
-                if (parkKode === park.parkCode) {
-                    return park.fullName;
-                }
-            })
-            .join("");
-    }
-
-    // only add a details button for the park if there ISN'T one
-    const parkDetailsButton = mainContainer.querySelector(
-        "#park__details__button"
-    );
-
-    if (parkContainer.innerHTML && !parkDetailsButton) {
-        parkContainer.innerHTML += DetailsButton("park") + deleteButton("park");
-    }
-
+document.addEventListener("change", () => {
+    // checking to see if the dropdown has a value, i.e. not the default ""
     const selectedPark = document.querySelector(
         "#parks__dropdown option:checked"
     );
+    // this is the element that shows up in the itinerary
+    const itineraryPark = document.querySelector(".chosenPark");
 
-    if (!selectedPark) {
-        parkDetailsButton.hidden = true;
+    // default value is blank string, check for truthy value
+    if (selectedPark.value) {
+        itineraryPark.innerHTML =
+            selectedPark.text + DetailsButton("park") + deleteButton("park");
     } else {
-        // TODO FIXME throwing an error sometimes but why?
-        parkDetailsButton.hidden = false;
+        // this is what the itinerary park should show on reset to "Select a park"
+        itineraryPark.innerHTML = "";
+    }
+
+    // hide/show the details button if a selection is made
+    const bizarreDetailsButton = mainContainer.querySelector(".chosenPark");
+    if (!selectedPark) {
+        bizarreDetailsButton.hidden = true;
+    } else {
+        bizarreDetailsButton.hidden = false;
     }
 });
 
@@ -114,9 +99,9 @@ ${parkObj.description}
     }
 });
 
-mainContainer.addEventListener("click", (clickEvent) =>{
-    const parkContainer = document.querySelector(".chosenPark")
-    if (clickEvent.target.id === "park__delete__button"){
-        parkContainer.innerHTML = ""
+mainContainer.addEventListener("click", (clickEvent) => {
+    const parkContainer = document.querySelector(".chosenPark");
+    if (clickEvent.target.id === "park__delete__button") {
+        parkContainer.innerHTML = "";
     }
-})
+});
