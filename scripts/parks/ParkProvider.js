@@ -14,7 +14,7 @@ export const ParkProvider = () => {
             <select class="dropdown" id="parks__dropdown">
                 <option value="">Select a Park</option>
                 ${parks.map((park) => {
-                    return `<option value="${park.parkCode}">${park.fullName}</option>`;
+                    return `<option value="${park.id}">${park.fullName}</option>`;
                 })}
             </select>
         </div>

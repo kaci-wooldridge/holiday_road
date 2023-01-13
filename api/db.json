@@ -71,6 +71,30 @@
       "bizarreId": 5,
       "eateryId": 13,
       "id": 12
+    },
+    {
+      "parkCode": "alag",
+      "bizarreId": 7,
+      "eateryId": 5,
+      "id": 13
+    },
+    {
+      "parkCode": "64B9F127-31ED-43C9-882D-D7CD471AF314",
+      "bizarreId": 11,
+      "eateryId": 10,
+      "id": 14
+    },
+    {
+      "parkCode": "94B046DC-2AFD-4ECB-A60D-CE210A8550B1",
+      "bizarreId": 10,
+      "eateryId": 14,
+      "id": 15
+    },
+    {
+      "parkCode": "C4E1A9A4-D121-4734-94FA-7788A93C2AAA",
+      "bizarreId": 9,
+      "eateryId": 9,
+      "id": 16
     }
   ]
 }
