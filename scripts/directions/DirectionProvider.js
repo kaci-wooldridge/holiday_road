@@ -22,7 +22,7 @@ export const getCoords = (startingPoint, itineraryObj) => {
     const eateries = getEateries();
 
     // look up each item in the itinerary
-    let park = parks.find((park) => park.parkCode === itineraryObj.parkCode);
+    let park = parks.find((park) => park.id === itineraryObj.parkCode);
 
     let bizarre = bizarres.find(
         (bizarre) => bizarre.id === itineraryObj.bizarreId
