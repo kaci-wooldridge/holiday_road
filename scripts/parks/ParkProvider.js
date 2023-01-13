@@ -1,4 +1,9 @@
-import { getParks, fetchWeather, getWeather, applicationState } from "../data/DataAccess.js";
+import {
+    getParks,
+    fetchWeather,
+    getWeather,
+    applicationState,
+} from "../data/DataAccess.js";
 
 import { DetailsButton, deleteButton } from "../HolidayRoad.js";
 
@@ -9,15 +14,14 @@ export const ParkProvider = () => {
             <select class="dropdown" id="parks__dropdown">
                 <option value="">Select a Park</option>
                 ${parks.map((park) => {
-        return `<option value="${park.id}">${park.fullName}</option>`;
-    })}
+                    return `<option value="${park.parkCode}">${park.fullName}</option>`;
+                })}
             </select>
         </div>
     `;
 };
 
 document.addEventListener("change", (event) => {
-
     const parkContainer = document.querySelector(".chosenPark");
     const parks = getParks();
 
@@ -34,17 +38,14 @@ document.addEventListener("change", (event) => {
             })
             .join("");
 
-        parks.map(
-            (park) => {
-                if (parkId === park.id) {
+        parks.map((park) => {
+            if (parkId === park.id) {
+                const lat = park.latitude;
+                const long = park.longitude;
 
-                    const lat = park.latitude
-                    const long = park.longitude
-
-                    fetchWeather(lat, long)
-                }
+                fetchWeather(lat, long);
             }
-        )
+        });
         parkContainer.innerHTML = parks
             .map((park) => {
                 if (parkId === park.id) {
@@ -98,9 +99,7 @@ mainContainer.addEventListener("click", (clickEvent) => {
             "#parks__dropdown option:checked"
         );
 
-        const parkObj = parks.find(
-            (park) => park.id === selectedPark.value
-        );
+        const parkObj = parks.find((park) => park.id === selectedPark.value);
 
         let alertText = `${parkObj.fullName}
 ${parkObj.latLong} (${parkObj.states})
@@ -117,11 +116,11 @@ mainContainer.addEventListener("click", (clickEvent) => {
     const weatherContainer = document.querySelector(".showWeather");
     if (clickEvent.target.id === "park__delete__button") {
         parkContainer.innerHTML = "";
-        resetDropdown()
+        resetDropdown();
         weatherContainer.innerHTML = "";
     }
 });
 
-const resetDropdown = () =>{
-    document.getElementById('parks__dropdown').value = ""
-}
+const resetDropdown = () => {
+    document.getElementById("parks__dropdown").value = "";
+};

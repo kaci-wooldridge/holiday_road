@@ -59,6 +59,18 @@
       "bizarreId": 4,
       "eateryId": 18,
       "id": 10
+    },
+    {
+      "parkCode": "C4E1A9A4-D121-4734-94FA-7788A93C2AAA",
+      "bizarreId": 11,
+      "eateryId": 20,
+      "id": 11
+    },
+    {
+      "parkCode": "712044CE-4C85-48C2-813E-310A9C6C74E1",
+      "bizarreId": 5,
+      "eateryId": 13,
+      "id": 12
     }
   ]
 }
