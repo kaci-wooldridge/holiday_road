@@ -158,3 +158,11 @@ mainContainer.addEventListener("click", (clickEvent) => {
         sendItineraries(itineraryObj);
     }
 });
+
+// fixed save button reset logic
+mainContainer.addEventListener("click", (clickEvent) => {
+    const saveButton = document.querySelector(".saveButton");
+    if (clickEvent.target.className === "delete__button") {
+        saveButton.disabled = true;
+    }
+});
