@@ -1,5 +1,11 @@
-import { getParks } from "../data/DataAccess.js";
-import { detailsButton, deleteButton } from "../HolidayRoad.js";
+import {
+    getParks,
+    fetchWeather,
+    getWeather,
+    applicationState,
+} from "../data/DataAccess.js";
+
+import { DetailsButton, deleteButton } from "../HolidayRoad.js";
 
 export const ParkProvider = () => {
     const parks = getParks();
