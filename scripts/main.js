@@ -1,27 +1,25 @@
 import {
-	fetchBizarres,
-	fetchEateries,
-	fetchItineraries,
-	fetchParks,
-} from './data/DataAccess.js'
-import { HolidayRoad } from './HolidayRoad.js'
+    fetchBizarres,
+    fetchEateries,
+    fetchItineraries,
+    fetchParks,
+} from "./data/DataAccess.js";
+import { HolidayRoad } from "./HolidayRoad.js";
 
-
-const mainContainer = document.querySelector('#container')
+const mainContainer = document.querySelector("#container");
 
 const render = () => {
-	fetchParks()
-		.then(() => fetchBizarres())
-		.then(() => fetchEateries())
-		.then(() => fetchItineraries())
-		.then(() => {
-			mainContainer.innerHTML = HolidayRoad()
-		})
-}
+    fetchParks()
+        .then(() => fetchBizarres())
+        .then(() => fetchEateries())
+        .then(() => fetchItineraries())
+        .then(() => {
+            mainContainer.innerHTML = HolidayRoad();
+        });
+};
 
-render()
+render();
 
-mainContainer.addEventListener('stateChanged', (customEvent) => {
-	render()
-})
-
+mainContainer.addEventListener("stateChanged", (customEvent) => {
+    render();
+});

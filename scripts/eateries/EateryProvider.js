@@ -1,7 +1,7 @@
 import { getEateries } from "../data/DataAccess.js";
 import {
     deleteButton,
-    DetailsButton,
+    detailsButton,
     displayAmenities,
 } from "../HolidayRoad.js";
 
@@ -35,7 +35,7 @@ mainContainer.addEventListener("change", () => {
     if (selectedEatery.value) {
         itineraryEatery.innerHTML =
             selectedEatery.text +
-            DetailsButton("eatery") +
+            detailsButton("eatery") +
             deleteButton("eatery");
     } else {
         // this is what the itinerary eatery should show on reset to "Select an Eatery"

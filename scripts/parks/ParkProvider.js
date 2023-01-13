@@ -73,7 +73,7 @@ document.addEventListener("change", (event) => {
     // default value is blank string, check for truthy value
     if (selectedPark.value) {
         itineraryPark.innerHTML =
-            selectedPark.text + DetailsButton("park") + deleteButton("park");
+            selectedPark.text + detailsButton("park") + deleteButton("park");
     } else {
         // this is what the itinerary park should show on reset to "Select a park"
         itineraryPark.innerHTML = "";

@@ -1,7 +1,7 @@
 import { getBizarres } from "../data/DataAccess.js";
 import {
     deleteButton,
-    DetailsButton,
+    detailsButton,
     displayAmenities,
 } from "../HolidayRoad.js";
 
@@ -36,7 +36,7 @@ mainContainer.addEventListener("change", () => {
     if (selectedBizarre.value) {
         itineraryBizarre.innerHTML =
             selectedBizarre.text +
-            DetailsButton("bizarre") +
+            detailsButton("bizarre") +
             deleteButton("bizarre");
     } else {
         // this is what the itinerary bizarre should show on reset to "Select a Bizarre Destination"

@@ -50,10 +50,22 @@ export const HolidayRoad = () => {
             <h1>Saved Itinerary List</h1>
             <div class="savedItineraryList">${itineraryList()}</div>
         </div>
-    </div>`;
+    </div>
+    
+    <div id="directions__container">
+        <h3 id="directions__header"></h3>
+        <div id="turn-by-turn__container"></div>
+    </div>
+    `;
 };
 
-export const DetailsButton = (resource) => {
+export const deleteButton = (resource) => {
+    return `
+        <button class="delete__button" id="${resource}__delete__button">x</button>
+    `;
+};
+
+export const detailsButton = (resource) => {
     /*
         Returns a "details" button for a given resource
 
@@ -143,9 +155,3 @@ mainContainer.addEventListener("click", (clickEvent) => {
         sendItineraries(itineraryObj);
     }
 });
-
-export const deleteButton = (resource) => {
-    return `
-        <button class="delete__button" id="${resource}__delete__button">x</button>
-    `;
-};

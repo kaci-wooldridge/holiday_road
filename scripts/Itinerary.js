@@ -4,6 +4,7 @@ import {
     getItineraries,
     getParks,
 } from "./data/DataAccess.js";
+import { getCoords } from "./directions/DirectionProvider.js";
 
 const foundItineraries = (itinerary) => {
     const parks = getParks();
@@ -13,7 +14,7 @@ const foundItineraries = (itinerary) => {
     let bizarreName = "";
     let eateryName = "";
 
-    let html = '<div class="itinerary">';
+    let html = `<div class="itinerary" id="itinerary--${itinerary.id}">`;
 
     parks.map((park) => {
         if (park.id === itinerary.parkCode) {
@@ -37,7 +38,7 @@ const foundItineraries = (itinerary) => {
             <div class="savedPark">${parkName}</div>
             <div class="savedBizarre">${bizarreName}</div> 
             <div class="savedEatery">${eateryName}</div>
-            <button class="itinerary-directions__button">Get Directions</button>
+            <button class="itinerary-directions__button" id="itinerary--${itinerary.id}--directions__button">Get Directions</button>
         </div>
         `);
 };
@@ -52,3 +53,19 @@ export const itineraryList = () => {
 
     return html;
 };
+
+const mainContainer = document.querySelector("#container");
+
+mainContainer.addEventListener("click", (clickEvent) => {
+    if (clickEvent.target.className === "itinerary-directions__button") {
+        // get the id of the itinerary
+        const [, itineraryId] = clickEvent.target.id.split("--");
+        // look up the itinerary with the itineraryId
+        const itineraries = getItineraries();
+        const itinerary = itineraries.find(
+            (trip) => trip.id === parseInt(itineraryId)
+        );
+        // put all the coordinates from the geocaching API into the applicationState
+        getCoords("Nashville", itinerary);
+    }
+});
