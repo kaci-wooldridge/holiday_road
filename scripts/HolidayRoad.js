@@ -44,18 +44,21 @@ export const HolidayRoad = () => {
             <div class="weatherDisplay">
                 <div class="showWeather"></div>
             </div>
+            
+            <div id="directions__container">
+                <h3 id="directions__header"></h3>
+                <div id="turn-by-turn__container"></div>
+            </div>
+        
         </div>
 
+        
         <div class="savedOptions">
             <h1>Saved Itinerary List</h1>
             <div class="savedItineraryList">${itineraryList()}</div>
         </div>
     </div>
     
-    <div id="directions__container">
-        <h3 id="directions__header"></h3>
-        <div id="turn-by-turn__container"></div>
-    </div>
     `;
 };
 
