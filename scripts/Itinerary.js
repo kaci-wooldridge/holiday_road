@@ -4,7 +4,7 @@ import {
     getItineraries,
     getParks,
 } from "./data/DataAccess.js";
-import { getDirections } from "./directions/DirectionProvider.js";
+import { getCoords } from "./directions/DirectionProvider.js";
 
 const foundItineraries = (itinerary) => {
     const parks = getParks();
@@ -56,7 +56,6 @@ export const itineraryList = () => {
 
 const mainContainer = document.querySelector("#container");
 
-// get directions listener
 mainContainer.addEventListener("click", (clickEvent) => {
     if (clickEvent.target.className === "itinerary-directions__button") {
         // get the id of the itinerary
@@ -66,6 +65,7 @@ mainContainer.addEventListener("click", (clickEvent) => {
         const itinerary = itineraries.find(
             (trip) => trip.id === parseInt(itineraryId)
         );
-        const directions = getDirections("Nashville", itinerary);
+        // put all the coordinates from the geocaching API into the applicationState
+        getCoords("Nashville", itinerary);
     }
 });
