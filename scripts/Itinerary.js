@@ -16,7 +16,7 @@ const foundItineraries = (itinerary) => {
     let html = '<div class="itinerary">';
 
     parks.map((park) => {
-        if (park.parkCode === itinerary.parkCode) {
+        if (park.id === itinerary.parkCode) {
             return (parkName = park.fullName);
         }
     });
